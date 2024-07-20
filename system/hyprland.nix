@@ -4,8 +4,8 @@
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
-    # package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
   };
 
-  # services.xserver.displayManager.startx.enable = true;
+  services.xserver.displayManager.startx.enable = true;
 }
