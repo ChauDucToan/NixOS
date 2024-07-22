@@ -26,8 +26,6 @@ in
 
     settings = {
 
-      exec = ''${startupScript}/bin/start'';
-
       env = [ "XCURSOR_SIZE,24" "HYPRCURSOR_SIZE,24" ];
 
       general = {
@@ -179,6 +177,8 @@ in
         "$mainMod, mouse:273, resizewindow"
         "$mainMod ALT, mouse:272, resizewindow"
       ];
+
+      exec-once = ''${startupScript}/bin/start'';
     };
   };
 }
