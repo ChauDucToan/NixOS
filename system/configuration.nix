@@ -10,7 +10,8 @@
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./pipewire.nix
-      # ./xdg.nix
+      ./hyprland.nix
+      ./xdg.nix
     ];
 
   # Set up flakes permanently
@@ -59,7 +60,7 @@
 
   environment.sessionVariables = {
     # If your cursor becomes invisible
-    # WLR_NO_HARDWARE_CURSORS = "1";
+    WLR_NO_HARDWARE_CURSORS = "1";
     # Hint electron apps to use wayland
     NIXOS_OZONE_WL = "1";
   };
@@ -147,6 +148,7 @@
       mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
     })
     )
+    # hyprland
 
     vencord
     neovim # Install neovim

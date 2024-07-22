@@ -11,7 +11,7 @@
     hyprland.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, ... }:
+  outputs = inputs@{ self, nixpkgs, home-manager, hyprland, ... }:
     let
       nix_lib = nixpkgs.lib;
       home_lib = home-manager.lib;
@@ -34,6 +34,7 @@
           inherit pkgs;
           extraSpecialArgs = { inherit inputs; };
           modules = [
+            hyprland.homeManagerModules.default
             ./user/home.nix
           ];
         };
