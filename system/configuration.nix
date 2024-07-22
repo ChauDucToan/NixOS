@@ -8,8 +8,6 @@
   imports =
     [
       # Include the results of the hardware scan.
-      ./waybar.nix
-      ./hyprland.nix
       ./hardware-configuration.nix
       ./pipewire.nix
       # ./xdg.nix
@@ -146,9 +144,6 @@
 
     gtk4
 
-
-
-
     vencord
     neovim # Install neovim
     thunderbird
@@ -159,13 +154,8 @@
     swappy
     lf
     kitty
-    waybar
     libnotify
     dunst
-    (waybar.overrideAttrs (oldAttrs: {
-      mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-    })
-    )
     systemd
     swww
     rofi-wayland
