@@ -59,7 +59,7 @@
 
   environment.sessionVariables = {
     # If your cursor becomes invisible
-    WLR_NO_HARDWARE_CURSORS = "1";
+    # WLR_NO_HARDWARE_CURSORS = "1";
     # Hint electron apps to use wayland
     NIXOS_OZONE_WL = "1";
   };
@@ -143,6 +143,10 @@
     bottles
 
     gtk4
+    (pkgs.waybar.overrideAttrs (oldAttrs: {
+      mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+    })
+    )
 
     vencord
     neovim # Install neovim
