@@ -6,7 +6,7 @@ let
 
     swww-daemon &
 
-    swww img /Pictures/highres-Elaina.jpg &
+    swww img ~/Pictures/highres-Elaina.jpg &
 
     dunst
   '';
@@ -26,7 +26,7 @@ in
 
     settings = {
 
-      exec-one = ''${startupScript}/bin/start'';
+      exec = ''${startupScript}/bin/start'';
 
       env = [ "XCURSOR_SIZE,24" "HYPRCURSOR_SIZE,24" ];
 
@@ -57,8 +57,6 @@ in
         "col.shadow" = "rgba(1a1a1aee)";
 
         blur = {
-          enable = "true";
-
           size = "3";
 
           passes = "1";
@@ -177,9 +175,9 @@ in
 
       bindm = [
         # mouse movements
-        "$mod, mouse:272, movewindow"
-        "$mod, mouse:273, resizewindow"
-        "$mod ALT, mouse:272, resizewindow"
+        "$mainMod, mouse:272, movewindow"
+        "$mainMod, mouse:273, resizewindow"
+        "$mainMod ALT, mouse:272, resizewindow"
       ];
     };
   };
