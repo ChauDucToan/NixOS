@@ -40,6 +40,27 @@
     (writeShellScriptBin "my-hello" ''
       echo "Hello, ${config.home.username}!"
     '')
+
+    (writeShellScriptBin "cpp" ''
+      #!bin/bash
+
+      if [ "$#" -ne 1 ]; then
+        echo "Usage: cpp <fileName>"
+        exit 1
+      fi
+      
+      fileName="$1"
+
+      g++ -o "$fileName" "$fileName.cpp"
+      if [ $? -eq 0 ]; then
+        echo "Build $fileName successfully!"
+      else
+        echo "Some things wrong!?!"
+        exit 1
+      fi
+    ''
+    )
+
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
