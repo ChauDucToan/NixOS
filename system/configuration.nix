@@ -160,8 +160,8 @@
     swappy
     lf
     kitty
-    libnotify
     dunst
+    mako
     systemd
     swww
     rofi-wayland

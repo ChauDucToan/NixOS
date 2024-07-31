@@ -71,7 +71,7 @@
       
       fileName="$1"
 
-      gcc -o "$fileName" "$fileName.cpp"
+      gcc -o "$fileName" "$fileName.c"
       if [ $? -eq 0 ]; then
         echo "Build $fileName successfully!"
       else
