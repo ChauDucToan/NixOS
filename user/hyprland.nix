@@ -32,23 +32,23 @@ in
         gaps_in = "5";
         gaps_out = "20";
 
-        border_size = "2";
+        border_size = "3";
 
-        "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 60deg";
-        "col.inactive_border" = "rgba(595959aa)";
+        "col.active_border" = "rgba(92c7cfff) rgba(aad7d9ff) 45deg";
+        "col.inactive_border" = "rgba(e5e1dabb)";
 
         resize_on_border = "false";
 
         allow_tearing = "false";
 
-        layout = "dwindle";
+        layout = "master";
       };
 
       decoration = {
-        rounding = "10";
+        rounding = "0";
 
         active_opacity = "1.0";
-        inactive_opacity = "0.8";
+        inactive_opacity = "1.0";
 
         drop_shadow = "true";
         shadow_range = "4";
@@ -72,10 +72,13 @@ in
 
         animation = [
           "windows, 1, 7, myBezier"
-          "windowsOut, 1, 7, default, popin 80%"
+          "windowsOut, 1, 7, default, slide bottom"
+
           "border, 1, 10, default"
           "borderangle, 1, 8, default"
+
           "fade, 1, 7, default"
+
           "workspaces, 1, 6, default"
         ];
       };
@@ -87,7 +90,7 @@ in
 
       # See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
       master = {
-        new_status = "master";
+        new_status = "slave";
       };
 
       # https://wiki.hyprland.org/Configuring/Variables/#misc
@@ -101,7 +104,7 @@ in
 
         follow_mouse = "1";
 
-        sensitivity = "0"; # -1.0 - 1.0, 0 means no modification.
+        sensitivity = "-0.5"; # -1.0 - 1.0, 0 means no modification.
 
         touchpad = {
           natural_scroll = "false";
@@ -119,6 +122,9 @@ in
         sensitivity = "-0.5";
       };
 
+      cursor = {
+        no_hardware_cursors = "true";
+      };
 
       "$mainMod" = "SUPER";
       "$terminal" = "kitty";

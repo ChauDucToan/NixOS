@@ -61,6 +61,25 @@
     ''
     )
 
+    (writeShellScriptBin "cee" ''
+      #!bin/bash
+
+      if [ "$#" -ne 1 ]; then
+        echo "Usage: cpp <fileName>"
+        exit 1
+      fi
+      
+      fileName="$1"
+
+      gcc -o "$fileName" "$fileName.cpp"
+      if [ $? -eq 0 ]; then
+        echo "Build $fileName successfully!"
+      else
+        echo "Some things wrong!?!"
+        exit 1
+      fi
+    ''
+    )
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
