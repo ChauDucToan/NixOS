@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./neovim.nix
     ./waybar.nix
     ./hyprland.nix
   ];

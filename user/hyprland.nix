@@ -6,7 +6,7 @@ let
 
     swww-daemon &
 
-    swww img ~/Pictures/highres-Elaina.jpg &
+    swww img ~/Pictures/anby.png &
 
     dunst
 

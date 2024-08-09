@@ -63,7 +63,7 @@
     # If your cursor becomes invisible
     WLR_NO_HARDWARE_CURSORS = "1";
     # Hint electron apps to use wayland
-    NIXOS_OZONE_WL = "1";
+    NIXOS_OZONE_WL = "0";
   };
 
   hardware = {
@@ -130,6 +130,7 @@
     neofetch
     # pkgs.home-manager
 
+    emacs
     wget # Need for mason.nvim
     curl # Need for mason.nvim
     gnutar
@@ -168,11 +169,21 @@
     rofi-wayland
     vesktop
     virtualbox
+
+    osu-lazer-bin
+
+    ibus
+    ibus-engines.bamboo
   ];
 
   # Set default editor to vim
 
-  environment.variables.EDITOR = "vim";
+  # environment.variables.EDITOR = "vim";
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+    runtime."init.lua".source = "/home/oslamelon/.config/nvim/init.lua";
+  };
 
   # Install telex for Linux
   i18n.inputMethod = {
