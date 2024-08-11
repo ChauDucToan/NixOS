@@ -170,7 +170,7 @@
     vesktop
     virtualbox
 
-    osu-lazer-bin
+    osu-lazer
 
     ibus
     ibus-engines.bamboo
