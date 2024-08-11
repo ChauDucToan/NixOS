@@ -66,7 +66,7 @@
       #!bin/bash
 
       if [ "$#" -ne 1 ]; then
-        echo "Usage: cpp <fileName>"
+        echo "Usage: cee <fileName>"
         exit 1
       fi
       
