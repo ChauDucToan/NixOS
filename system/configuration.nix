@@ -68,14 +68,22 @@
 
   hardware = {
     # Opengl
-    opengl.enable = true;
+    opengl = {
+      enable = true;
+      driSupport = true;
+      driSupport32Bit = true;
+    };
+
 
     # Most wayland compositors need this
     nvidia.modesetting.enable = true;
   };
 
+
+
   # Enable the X11 windowing system.
   services.xserver.enable = true;
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
@@ -170,7 +178,7 @@
     vesktop
     virtualbox
 
-    osu-lazer
+    osu-lazer-bin
 
     ibus
     ibus-engines.bamboo
@@ -192,6 +200,8 @@
       bamboo
     ];
   };
+
+
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
