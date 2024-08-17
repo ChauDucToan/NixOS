@@ -150,6 +150,7 @@
       unzip
       python3
       ffmpeg
+      libreoffice-qt6-fresh
       mpv
       gcc
       ncurses
@@ -181,8 +182,6 @@
       anki
       virtualbox
 
-      osu-lazer
-
       ibus
       ibus-engines.bamboo
     ] ++ ([ ]);
@@ -193,7 +192,6 @@
     programs.neovim = {
       enable = true;
       defaultEditor = true;
-      runtime."init.lua".source = "/home/oslamelon/.config/nvim/init.lua";
     };
 
     # Install telex for Linux

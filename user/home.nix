@@ -91,6 +91,11 @@
     # # symlink to the Nix store copy.
     # ".screenrc".source = dotfiles/screenrc;
 
+    # "/home/oslamelon/.config/nvim/init.lua".source = ../config/neovim/init.lua;
+    # "/home/oslamelon/.config/nvim/lua".source = ../config/neovim/lua;
+    "/home/oslamelon/.config/nvim".source = ../config/neovim;
+
+
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
     #   org.gradle.console=verbose

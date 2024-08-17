@@ -6,7 +6,7 @@ let
 
     swww-daemon &
 
-    swww img ~/Pictures/anby.png &
+    swww img ./Pictures/anby.png &
 
     dunst
 
@@ -36,7 +36,7 @@ in
 
         border_size = "3";
 
-        "col.active_border" = "rgba(92c7cfff) rgba(aad7d9ff) 45deg";
+        "col.active_border" = "rgba(cccc33ff) rgba(424153ff) 45deg";
         "col.inactive_border" = "rgba(e5e1dabb)";
 
         resize_on_border = "false";
@@ -47,7 +47,7 @@ in
       };
 
       decoration = {
-        rounding = "0";
+        rounding = "10";
 
         active_opacity = "1.0";
         inactive_opacity = "1.0";
