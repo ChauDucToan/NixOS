@@ -23,7 +23,7 @@
   };
 
   config = {
-    ton.maths.linfunc = 200;
+    ton.maths.linfunc = 100;
     # Set up flakes permanently
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
