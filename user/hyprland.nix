@@ -1,6 +1,10 @@
 { config, inputs, lib, pkgs, ... }:
 
 let
+  grimScrSh = pkgs.pkgs.writeShellScriptBin "cptr" ''
+    grim -g "$(slurp)" - | wl-copy
+  '';
+
   startupScript = pkgs.pkgs.writeShellScriptBin "start" ''
     waybar &
 
@@ -137,12 +141,12 @@ in
         "$mainMod, Q, exec, $terminal"
         "$mainMod, C, killactive,"
         "$mainMod, M, exit,"
-        "$mainMod SHIFT, E, exec, $fileManager"
+        # "$mainMod SHIFT, E, exec, $fileManager"
         "$mainMod, V, togglefloating,"
         "$mainMod, R, exec, $menu"
         "$mainMod, P, pseudo," # dwindle
         "$mainMod, J, togglesplit," # dwindle
-        #"$mainMod SHIFT, ESC, $files"
+        "$mainMod ALT, W, exec, ${grimScrSh}/bin/cptr"
 
         # Move focus with mainMod + arrow keys
         "$mainMod, left, movefocus, l"

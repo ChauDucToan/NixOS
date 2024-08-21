@@ -182,6 +182,9 @@
       vesktop
       anki
       virtualbox
+      grim # screenshot
+      slurp # screen area selection
+      wl-clipboard
 
       ibus
       ibus-engines.bamboo
