@@ -156,6 +156,7 @@
       gcc
       ncurses
       bottles
+      siyuan
 
       gtk4
       (pkgs.waybar.overrideAttrs (oldAttrs: {
