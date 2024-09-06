@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, lib, inputs, pkgs, ... }:
+{ config, lib, inputs, pkgs, pkgs-unstable, ... }:
 
 {
   imports =
@@ -141,7 +141,6 @@
       neofetch
       # pkgs.home-manager
 
-      emacs
       wget # Need for mason.nvim
       curl # Need for mason.nvim
       gnutar
@@ -156,7 +155,6 @@
       gcc
       ncurses
       bottles
-      siyuan
 
       gtk4
       (pkgs.waybar.overrideAttrs (oldAttrs: {
@@ -189,7 +187,11 @@
 
       ibus
       ibus-engines.bamboo
-    ] ++ ([ ]);
+    ] ++ (with pkgs-unstable; [
+      # hyprland
+      libinput
+      aquamarine
+    ]);
 
     # Set default editor to vim
 
