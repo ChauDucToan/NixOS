@@ -190,7 +190,6 @@
     ] ++ (with pkgs-unstable; [
       # hyprland
       libinput
-      aquamarine
     ]);
 
     # Set default editor to vim

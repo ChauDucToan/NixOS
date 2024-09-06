@@ -94,6 +94,7 @@
     # "/home/oslamelon/.config/nvim/init.lua".source = ../config/neovim/init.lua;
     # "/home/oslamelon/.config/nvim/lua".source = ../config/neovim/lua;
     "/home/oslamelon/.config/nvim".source = ../config/neovim;
+    "/home/oslamelon/.config/kitty".source = ../config/kitty;
 
 
     # # You can also set the file content immediately.
