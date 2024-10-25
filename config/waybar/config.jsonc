@@ -14,7 +14,6 @@
         "custom/media"
     ],
     "modules-center": [
-        "clock",
         "sway/window"
     ],
     "modules-right": [
@@ -31,6 +30,7 @@
         "keyboard-state",
         "sway/language",
         "tray",
+        "clock",
         "custom/power"
     ],
     // Modules configuration
@@ -219,15 +219,7 @@
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
     },
     "custom/power": {
-        "format" : "⏻ ",
-        "tooltip": false,
-        "menu": "on-click",
-        "menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
-        "menu-actions": {
-                "shutdown": "shutdown",
-                "reboot": "reboot",
-                "suspend": "systemctl suspend",
-                "hibernate": "systemctl hibernate"
-        }
+        "format" : " ⏻ ",
+        "on-click": "notify-send -h string:bgcolor:#4444ff -h string:fgcolor:#ff4444 -h string:frcolor:#44ff44 \"Currently unable to shut down. Please press Win + M to shut down hyprland\""
     }
 }

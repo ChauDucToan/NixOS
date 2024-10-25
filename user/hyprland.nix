@@ -191,6 +191,7 @@ in
       ];
 
       exec-once = ''${startupScript}/bin/start'';
+      exec = "ibus start";
     };
   };
 }
