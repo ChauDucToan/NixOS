@@ -1,28 +1,14 @@
-{ inputs, config, pkgs, ... }:
+{ inputs, config, username, pkgs, ... }:
 
 {
   imports = [
-    ./neovim.nix
-    ./waybar.nix
-    ./hyprland.nix
   ];
 
-  # Home Manager needs a bit of information about you and the paths it should
-  # manage.
-  home.username = "oslamelon";
-  home.homeDirectory = "/home/oslamelon";
+  home.username = "${username}";
+  home.homeDirectory = "/home/${username}";
 
-  # This value determines the Home Manager release that your configuration is
-  # compatible with. This helps avoid breakage when a new Home Manager release
-  # introduces backwards incompatible changes.
-  #
-  # You should not change this value, even if you update Home Manager. If you do
-  # want to update the value, then make sure to first check the Home Manager
-  # release notes.
-  home.stateVersion = "24.05"; # Please read the comment before changing.
+  home.stateVersion = "24.05"; 
 
-  # The home.packages option allows you to install Nix packages into your
-  # environment.
   home.packages = with pkgs; [
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
@@ -41,45 +27,8 @@
     (writeShellScriptBin "my-hello" ''
       echo "Hello, ${config.home.username}!"
     '')
-
-    (writeShellScriptBin "cpp" ''
-      #!bin/bash
-
-      if [ "$#" -ne 1 ]; then
-        echo "Usage: cpp <fileName>"
-        exit 1
-      fi
-      
-      fileName="$1"
-
-      g++ -o "$fileName" "$fileName.cpp"
-      if [ $? -eq 0 ]; then
-        echo "Build $fileName successfully!"
-      else
-        echo "Some things wrong!?!"
-        exit 1
-      fi
-    ''
-    )
-
-    (writeShellScriptBin "cee" ''
-      #!bin/bash
-
-      if [ "$#" -ne 1 ]; then
-        echo "Usage: cee <fileName>"
-        exit 1
-      fi
-      
-      fileName="$1"
-
-      gcc -o "$fileName" "$fileName.c"
-      if [ $? -eq 0 ]; then
-        echo "Build $fileName successfully!"
-      else
-        echo "Some things wrong!?!"
-        exit 1
-      fi
-    ''
+    (writeShellScriptBin "my-md-template" (
+      builtins.readFile ../conf/Bin/makeTemplatesmd.bash)
     )
   ];
 
@@ -91,11 +40,12 @@
     # # symlink to the Nix store copy.
     # ".screenrc".source = dotfiles/screenrc;
 
-    # "/home/oslamelon/.config/nvim/init.lua".source = ../config/neovim/init.lua;
-    # "/home/oslamelon/.config/nvim/lua".source = ../config/neovim/lua;
-    "/home/oslamelon/.config/nvim".source = ../config/neovim;
-    "/home/oslamelon/.config/kitty".source = ../config/kitty;
-
+    "/home/${username}/.config/nvim/init.lua".source = ../conf/nvim/init.lua;
+    "/home/${username}/.config/nvim/lua".source = ../conf/nvim/lua;
+    # "/home/${username}/.config/nvim".source = ../conf/nvim;
+    "/home/${username}/.config/waybar".source = ../conf/waybar;
+    "/home/${username}/.config/kitty".source = ../conf/kitty;
+    "/home/${username}/.config/hypr".source = ../conf/hypr;
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
@@ -103,6 +53,8 @@
     #   org.gradle.daemon.idletimeout=3600000
     # '';
   };
+
+  # i18n.inputMethod.fcitx5.addons = with pkgs; [ fcitx5-with-addons ];
 
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a
@@ -122,6 +74,11 @@
   #
   home.sessionVariables = {
     # EDITOR = "emacs";
+    GTK_IM_MODULE = "fcitx";
+    QT_IM_MODULE = "fcitx";
+    SDL_IM_MODULE= "fcitx";
+    GLFW_IM_MODULE="ibus";
+    XMODIFIERS = "@im=fcitx";
   };
 
   # systemd.user.enable = true;
@@ -132,6 +89,19 @@
       ll = "ls -l";
       ".." = "cd ..";
     };
+    initExtra = ''
+      __conda_setup="$('/home/oslamelon/.conda/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+      if [ $? -eq 0 ]; then
+          eval "$__conda_setup"
+      else
+          if [ -f "/home/oslamelon/.conda/etc/profile.d/conda.sh" ]; then
+              . "/home/oslamelon/.conda/etc/profile.d/conda.sh"
+          else
+              export PATH="/home/oslamelon/.conda/bin:$PATH"
+          fi
+      fi
+      unset __conda_setup
+    '';
   };
 
   # Let Home Manager install and manage itself.

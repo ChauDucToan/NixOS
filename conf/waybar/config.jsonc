@@ -220,6 +220,6 @@
     },
     "custom/power": {
         "format" : " ⏻ ",
-        "on-click": "notify-send -h string:bgcolor:#4444ff -h string:fgcolor:#ff4444 -h string:frcolor:#44ff44 \"Currently unable to shut down. Please press Win + M to shut down hyprland\""
+        "on-click": "exit"
     }
 }
