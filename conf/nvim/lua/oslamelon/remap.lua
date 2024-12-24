@@ -14,6 +14,11 @@ vim.keymap.set("n", "<leader>Y", "\"+Y")
 vim.keymap.set("v", "<leader>y", "\"+y")
 
 vim.keymap.set("n", "<leader>f", "$V%zf")
+vim.keymap.set("n", "<leader>t", function()
+    fileName = vim.fn.expand("%:t:r")
+    vim.cmd(string.format('!my-md-template %s', fileName))
+end
+)
 
 
 --int main()  {

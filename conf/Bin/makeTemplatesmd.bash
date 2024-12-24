@@ -12,7 +12,7 @@ function isTemplates() {
     fi
 }
 
-set -- "./Templates/Zettle.md" "$(date "+%d%m%Y")"
+set -- "./Templates/Zettle.md" "$1"
 if [[ $(isTemplates $1) ]] && [[ -e $1 ]]; then
     if [[ -z $2 ]]; then
         set -- "$1" "$(date "+%d%m%Y")"
