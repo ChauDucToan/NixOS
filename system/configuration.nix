@@ -5,7 +5,6 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./tmux.nix
-      ./osu.nix
     ];
   # Setup flake permanently
   nix.settings.experimental-features = [ "nix-command" "flakes" ];

@@ -2,12 +2,21 @@
 
 {
   imports = [
+    ./osu.nix
   ];
 
   home.username = "${username}";
   home.homeDirectory = "/home/${username}";
 
   home.stateVersion = "24.05"; 
+
+  home.pointerCursor = {
+      gtk.enable = true;
+      x11.enable = true;
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Modern-Ice";
+      size = 24;
+  };
 
   home.packages = with pkgs; [
     # # Adds the 'hello' command to your environment. It prints a friendly
@@ -27,6 +36,7 @@
     (writeShellScriptBin "my-hello" ''
       echo "Hello, ${config.home.username}!"
     '')
+
     (writeShellScriptBin "my-md-template" (
       builtins.readFile ../conf/Bin/makeTemplatesmd.bash)
     )
