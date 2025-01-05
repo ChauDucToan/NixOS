@@ -105,11 +105,14 @@
 
   # make pipewire realtime-capable
   security.rtkit.enable = true;
+  security.polkit = {
+    enable = true;
+  };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${username} = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "docker" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "docker" "gamemode" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       firefox
       obsidian
@@ -119,8 +122,6 @@
       vlc
       vesktop
       libreoffice-qt6-fresh
-      nerd-fonts.noto
-      nerd-fonts.symbols-only
     ];
   };
 
@@ -142,8 +143,14 @@
     openssh
     libmad
 
-    wineWowPackages.unstableFull
+    libGLU
+    linuxKernel.packages.linux_xanmod_stable.nvidia_x11
+    dotnet-sdk
+    wineWowPackages.waylandFull
     cachix
+
+    vulkan-headers 
+    vulkan-loader
 
     wget
     curl
@@ -200,6 +207,10 @@
     lf
     dbus
   ];
+
+  programs.gamemode = {
+    enable = true;
+  };
 
   programs.hyprland = {
     enable = true;
