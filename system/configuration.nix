@@ -57,6 +57,7 @@
   hardware = {
     graphics = {
       enable = true;
+      enable32Bit = true;
     };
 
     nvidia = { 
@@ -75,7 +76,6 @@
   services.xserver.videoDrivers = [ "nvidia" "modesetting" ];
 
   # Enable the KDE Desktop Environment.
-  services.desktopManager.plasma6.enable = true;
   services.displayManager.enable = true;
   services.displayManager.sddm.enable = true;
   services.displayManager.sddm.wayland.enable = true;
@@ -90,8 +90,21 @@
 
   services.pipewire = {
     enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
     pulse.enable = true;
+
+    lowLatency = {
+      # enable this module
+      enable = true;
+      # defaults (no need to be set unless modified)
+      quantum = 64;
+      rate = 48000;
+    };
   };
+
+  # make pipewire realtime-capable
+  security.rtkit.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${username} = {
@@ -100,18 +113,14 @@
     packages = with pkgs; [
       firefox
       obsidian
-      neofetch
-      zoom-us
+      nautilus
+      fastfetch
       obs-studio
       vlc
       vesktop
-      plantuml
-      netbeans
       libreoffice-qt6-fresh
-      nerd-fonts._0xproto
+      nerd-fonts.noto
       nerd-fonts.symbols-only
-      font-awesome
-      unicode-character-database
     ];
   };
 
@@ -126,11 +135,15 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
+  
   environment.systemPackages = with pkgs; [
     neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     git
     openssh
     libmad
+
+    wineWowPackages.unstable
+    cachix
 
     wget
     curl
@@ -143,7 +156,9 @@
     ffmpeg
     fmt
     ninja
+    tlp
 
+    cmake
     extra-cmake-modules
     gnumake
     gdb
