@@ -30,7 +30,6 @@
     (writeShellScriptBin "my-md-template" (
       builtins.readFile ../conf/Bin/makeTemplatesmd.bash)
     )
-    inputs.nix-gaming.packages.${pkgs.system}.osu-stable
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

@@ -47,19 +47,19 @@
               trusted-public-keys = ["nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="];
           };
         }
+
       ];
 	};
-      };
+  };
       homeConfigurations = {
         ${username} = homeLib.homeManagerConfiguration {
           inherit pkgs;
-	  extraSpecialArgs = {  inherit inputs username;  };
-	  modules = [  
-	    hyprland.homeManagerModules.default
-	    ./user/home.nix
-	  ];
-	};
+	      extraSpecialArgs = {  inherit inputs username;  };
+	      modules = [  
+	        hyprland.homeManagerModules.default
+	        ./user/home.nix
+	      ];
+	    };
       };
     };
-
 }
