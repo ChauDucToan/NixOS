@@ -1,8 +1,9 @@
 {pkgs, inputs, ...}: {
 
-    import = [
+    imports = [
         ./bash.nix
         ./osu.nix
+        ./blender.nix
     ];
 
 }

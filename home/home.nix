@@ -5,8 +5,7 @@ let
 in {
     imports = [
         ./config
-
-        ./program
+        ./programs
     ];
 
     home = {
@@ -44,13 +43,10 @@ in {
             # # fonts?
             # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
 
-            firefox
-            obsidian
-            nautilus
-            fastfetch
-            obs-studio
-            vesktop
             mpv
+            obsidian
+            firefox
+            vesktop
             libreoffice-qt6-fresh
 
             (writeShellScriptBin "my-hello" ''

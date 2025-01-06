@@ -1,5 +1,5 @@
-{pkgs, inputs}: {
-    import = [
+{pkgs, inputs, ...}: {
+    imports = [
         ./cursor.nix
     ];
 }
