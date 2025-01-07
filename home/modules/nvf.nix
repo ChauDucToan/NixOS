@@ -14,7 +14,7 @@
                     style = "dark";
                 };
 
-                statusLine.lualine.enable = true;
+                statusline.lualine.enable = true;
                 telescope.enable = true;
                 autocomplete.nvim-cmp.enable = true;
 
@@ -23,7 +23,13 @@
                     enableTreesitter = true;
 
                     nix.enable = true;
-                    ts.enable = true;
+                    clang = {
+                        enable = true;
+                        cHeader = true;
+                        lsp = {
+                            enable = true;
+                        };
+                    };
                     rust.enable = true;
                 };
             };

@@ -115,22 +115,11 @@
         packages = with pkgs; [ ];
     };
 
-    programs.nix-ld.enable = true;
-    programs.nix-ld.libraries = with pkgs; [
-        # Add any missing dynamic libraries for unpackaged programs
-        # here, NOT in environment.systemPackages
-        llvmPackages_19.libcxx
-        llvmPackages_19.clang
-        llvmPackages_19.clang-tools
-        llvmPackages_19.lldb
-        llvmPackages_19.libllvm
-    ];
-
     # List packages installed in system profile. To search, run:
     # $ nix search wget
       
     environment.systemPackages = with pkgs; [
-        neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+        # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
         git
         openssh
         libmad
