@@ -4,6 +4,7 @@ let
     conf = "${home}/.config/";
 in {
     imports = [
+        ./modules
         ./config
         ./programs
     ];
@@ -45,8 +46,11 @@ in {
 
             mpv
             obsidian
+            nautilus
+            htop
             firefox
             vesktop
+            obs-studio
             libreoffice-qt6-fresh
 
             (writeShellScriptBin "my-hello" ''
@@ -65,8 +69,8 @@ in {
             # # the Nix store. Activating the configuration will then make '~/.screenrc' a
             # # symlink to the Nix store copy.
 
-            "${conf}nvim/init.lua".source = ../conf/nvim/init.lua;
-            "${conf}nvim/lua".source = ../conf/nvim/lua;
+            # "${conf}nvim/init.lua".source = ../conf/nvim/init.lua;
+            # "${conf}nvim/lua".source = ../conf/nvim/lua;
             "${conf}waybar".source = ../conf/waybar;
             "${conf}kitty".source = ../conf/kitty;
             "${conf}hypr".source = ../conf/hypr;

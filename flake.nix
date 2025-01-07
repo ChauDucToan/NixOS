@@ -7,6 +7,11 @@
             inputs.nixpkgs.follows = "nixpkgs";
         };
 
+        nvf = {
+            url = "github:notashelf/nvf";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
+
         nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
         home-manager = {
@@ -20,7 +25,7 @@
         };
     };
 
-    outputs = { self, nix-gaming, nixpkgs, home-manager, hyprland, ... } @ inputs:
+    outputs = { self, nix-gaming, nixpkgs, home-manager, hyprland, nvf, ... } @ inputs:
     let
         nixLib = nixpkgs.lib;
         homeLib = home-manager.lib;

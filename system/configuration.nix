@@ -119,9 +119,11 @@
     programs.nix-ld.libraries = with pkgs; [
         # Add any missing dynamic libraries for unpackaged programs
         # here, NOT in environment.systemPackages
-        clang-tools
-        clang
         llvmPackages_19.libcxx
+        llvmPackages_19.clang
+        llvmPackages_19.clang-tools
+        llvmPackages_19.lldb
+        llvmPackages_19.libllvm
     ];
 
     # List packages installed in system profile. To search, run:
