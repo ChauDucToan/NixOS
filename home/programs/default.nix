@@ -4,6 +4,7 @@
         ./bash.nix
         ./osu.nix
         ./blender.nix
+        ./neovim
     ];
 
 }

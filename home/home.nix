@@ -4,7 +4,7 @@ let
     conf = "${home}/.config/";
 in {
     imports = [
-      # ./modules
+    # ./modules
         ./config
         ./programs
     ];
@@ -52,6 +52,7 @@ in {
             vesktop
             obs-studio
             libreoffice-qt6-fresh
+            llvmPackages_19.clang-unwrapped
 
             (writeShellScriptBin "my-hello" ''
                 echo "Hello, ${config.home.username}!"
@@ -70,7 +71,7 @@ in {
             # # symlink to the Nix store copy.
 
             # "${conf}nvim/init.lua".source = ../conf/nvim/init.lua;
-            "${conf}nvim/lua".source = ../conf/nvim/lua;
+            # "${conf}nvim/lua".source = ../conf/nvim/lua;
             "${conf}waybar".source = ../conf/waybar;
             "${conf}kitty".source = ../conf/kitty;
             "${conf}hypr".source = ../conf/hypr;

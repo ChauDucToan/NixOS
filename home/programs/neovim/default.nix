@@ -6,7 +6,7 @@ in {
         ./lua
     ];
 
-    home.file."${conf}/init.lua".text = ''
+    home.file."${conf}init.lua".text = ''
         require("${username}.remap")
         require("${username}.set")
         require("${username}")

@@ -115,11 +115,18 @@
         packages = with pkgs; [ ];
     };
 
+    programs.nix-ld.enable = true;
+    programs.nix-ld.libraries = with pkgs; [
+        # Add any missing dynamic libraries for unpackaged programs
+        # here, NOT in environment.systemPackages
+        llvmPackages_19.clang-unwrapped
+    ]; 
     # List packages installed in system profile. To search, run:
     # $ nix search wget
-      
+
     environment.systemPackages = with pkgs; [
         # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+        # llvmPackages_19.clang-tools
         git
         openssh
         libmad
