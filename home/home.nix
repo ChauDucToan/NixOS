@@ -4,7 +4,7 @@ let
     conf = "${home}/.config/";
 in {
     imports = [
-        ./modules
+      # ./modules
         ./config
         ./programs
     ];
@@ -70,7 +70,7 @@ in {
             # # symlink to the Nix store copy.
 
             # "${conf}nvim/init.lua".source = ../conf/nvim/init.lua;
-            # "${conf}nvim/lua".source = ../conf/nvim/lua;
+            "${conf}nvim/lua".source = ../conf/nvim/lua;
             "${conf}waybar".source = ../conf/waybar;
             "${conf}kitty".source = ../conf/kitty;
             "${conf}hypr".source = ../conf/hypr;
