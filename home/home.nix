@@ -4,7 +4,7 @@ let
     conf = "${home}/.config/";
 in {
     imports = [
-    # ./modules
+        # ./modules
         ./config
         ./programs
     ];
