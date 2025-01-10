@@ -132,11 +132,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1736277415,
-        "narHash": "sha256-kPDXF6cIPsVqSK08XF5EC6KM7BdMnM9vtJDzsnf+lLU=",
+        "lastModified": 1736366465,
+        "narHash": "sha256-Fo68EF6p/N9GJyHiAUbXtiE7IJlb3IMjK86LuxFMsRU=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "5c4302313d9207f7ec0886d68f8ff4a3c71209a1",
+        "rev": "7e00856596891850ba5ad4c5ecd2ed74468c08c5",
         "type": "github"
       },
       "original": {
@@ -221,11 +221,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1736279929,
-        "narHash": "sha256-F7e1z0rbCmvDLhbBuQ6Y/zzFYRBZXuSP1GrsterrdwU=",
+        "lastModified": 1736370994,
+        "narHash": "sha256-0rt/+Ma9a3HMmvxziMMmUTb5dPu4gN+lSbW+K/zxG6o=",
         "ref": "refs/heads/main",
-        "rev": "67e1e46f9b6285ea260bc88844f85dec6b7d7d02",
-        "revCount": 5645,
+        "rev": "c9822b08f914da2997e8ef47c8bef8016e5ff313",
+        "revCount": 5651,
         "type": "git",
         "url": "https://github.com/hyprwm/Hyprland"
       },
@@ -658,11 +658,11 @@
         "systems": "systems_3"
       },
       "locked": {
-        "lastModified": 1736219415,
-        "narHash": "sha256-guUJWyyKVYZwyP86CR6i5gchQLxIBG5j7JjX/9rA7dU=",
+        "lastModified": 1736361923,
+        "narHash": "sha256-mYfOx4UD+O/LF4BO8FE/OWsQ1XyQ+rMbrEKVs0jCv1g=",
         "owner": "notashelf",
         "repo": "nvf",
-        "rev": "aa7b55fa49a55f12e72807466e905a204c32384a",
+        "rev": "ab49ba443d1d17a31c67937b510d56ee8b60859f",
         "type": "github"
       },
       "original": {
@@ -2721,11 +2721,11 @@
       },
       "locked": {
         "dir": "packaging/nix",
-        "lastModified": 1736284266,
-        "narHash": "sha256-yCfpnL/EtGK5eb1Ev9f2Rkg8hLkjPwvOOpHLivXy024=",
+        "lastModified": 1736367905,
+        "narHash": "sha256-0fmp89XanBePv5Ivt/GIoRZlfigimDnOsp2MSvDmVok=",
         "ref": "refs/heads/main",
-        "rev": "57f9dfce97e4c49b74eea3e19376834f949f2d69",
-        "revCount": 883,
+        "rev": "0e23aaf93722aeefa3fc05ea6ed94734727e3028",
+        "revCount": 889,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/Open-Wine-Components/umu-launcher/?dir=packaging/nix"

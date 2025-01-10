@@ -44,7 +44,7 @@ in {
                             offsetEncoding = { "utf-8", "utf-16" },
                         },
                         cmd = {
-                            "clangd",
+                            "${clangd}",
                             "--background-index",
                             "--clang-tidy",
                             "--header-insertion=iwyu",

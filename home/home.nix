@@ -52,7 +52,6 @@ in {
             vesktop
             obs-studio
             libreoffice-qt6-fresh
-            llvmPackages_19.clang-unwrapped
 
             (writeShellScriptBin "my-hello" ''
                 echo "Hello, ${config.home.username}!"
