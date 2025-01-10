@@ -10,5 +10,6 @@
         ./vimbegood.nix
         ./vimmarkdown.nix
         ./vimtex.nix
+        ./lualine.nix
     ];
 }
