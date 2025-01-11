@@ -11,5 +11,7 @@
         ./vimmarkdown.nix
         ./vimtex.nix
         ./lualine.nix
+        ./markview.nix
+        ./deadcolumn.nix
     ];
 }
