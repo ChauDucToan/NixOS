@@ -1,5 +1,6 @@
-{pkgs, lib, username,...}: 
+{pkgs, lib, user,...}: 
 let
+    username = "${user.info.username}";
     conf = "/home/${username}/.config/nvim/";
     clangd = "${pkgs.llvmPackages_19.clang-unwrapped}/bin/clangd";
 in {

@@ -1,5 +1,5 @@
 {
-    description = "Flake for wayland!!!";
+    description = "A nixos flake with anby theme";
 
     inputs = {
         nix-gaming = {
@@ -37,11 +37,19 @@
             config.allowUnfree = true;
         };
 
+        user = {
+            info = {
+                username = "oslamelon";
+            };
+            system = "x86_64-linux";
+            theme = "anby";
+        };
+
         username = "oslamelon";
     in {
         nixosConfigurations = {
             ${username} = nixLib.nixosSystem {
-            specialArgs = {  inherit inputs system username;  };
+            specialArgs = {  inherit inputs system user;  };
             modules = [ 
                 ./system/configuration.nix 
                 nix-gaming.nixosModules.pipewireLowLatency
@@ -59,12 +67,15 @@
         homeConfigurations = {
             ${username} = homeLib.homeManagerConfiguration {
                 inherit pkgs;
-                extraSpecialArgs = {  inherit inputs username;  };
+                extraSpecialArgs = {  inherit inputs user;  };
                 modules = [  
                     hyprland.homeManagerModules.default
                     ./home/home.nix
                 ];
             };
         };
+        devShells.${system}.default = (
+            import ./shell/clang.nix {inherit pkgs;}
+        );
     };
 }

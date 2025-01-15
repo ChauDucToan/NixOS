@@ -1,4 +1,4 @@
-{ config, lib, inputs, username, pkgs, ... }:
+{ config, lib, inputs, user, pkgs, ... }:
 
 {
     imports = [ # Include the results of the hardware scan.
@@ -13,7 +13,7 @@
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
 
-    networking.hostName = "${username}"; # Define your hostname.
+    networking.hostName = "${user.info.username}"; # Define your hostname.
     networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
     # Set your time zone.

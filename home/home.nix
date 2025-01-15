@@ -1,5 +1,6 @@
-{ inputs, config, username, pkgs, ... }:
+{ inputs, config, user, pkgs, ... }:
 let
+    username = "${user.info.username}";
     home = "/home/${username}";
     conf = "${home}/.config/";
 in {
@@ -10,7 +11,7 @@ in {
     ];
 
     home = {
-        username = "${username}";
+        username = username;
         homeDirectory = home;
 
         # Home Manager can also manage your environment variables through

@@ -1,5 +1,6 @@
-{pkgs, lib, username,...}: 
+{pkgs, lib, user,...}: 
 let
+    username = "${user.info.username}";
     conf = "/home/${username}/.config/nvim/";
     filename = "deadcolumn";
 in {
@@ -8,8 +9,18 @@ in {
             "Bekaboo/${filename}.nvim",
             config = function()
                 require("${filename}").setup({
-                    scope = 'line', ---@type string|fun(): integer
+                    ---@type string|fun(): integer
                     ---@type string[]|fun(mode: string): boolean
+                    scope = function()
+                        local max = 0
+                        for i = -50, 50 do
+                            local len = vim.fn.strdisplaywidth(vim.fn.getline(vim.fn.line('.') + i))
+                            if len > max then
+                                max = len
+                            end
+                        end
+                        return max
+                    end,
                     modes = function(mode)
                         return mode:find('^[ictRss\x13]') ~= nil
                     end,
@@ -26,9 +37,12 @@ in {
                     },
                     extra = {
                         ---@type string?
-                        follow_tw = nil,
+                        follow_tw = "80",
                     },
                 })
+
+                vim.opt.colorcolumn = "80"
+                vim.cmd([[ set termguicolors ]])
             end
         }
         '';

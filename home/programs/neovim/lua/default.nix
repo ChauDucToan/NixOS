@@ -1,6 +1,6 @@
-{username,...}:
+{user,...}:
 {
     imports = [
-        ./${username}
+        ./${user.info.username}
     ];
 }

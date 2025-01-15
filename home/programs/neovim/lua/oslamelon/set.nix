@@ -1,5 +1,6 @@
-{pkgs, lib, username,...}: 
+{pkgs, lib, user,...}: 
 let
+    username = "${user.info.username}";
     conf = "/home/${username}/.config/nvim/";
 in {
     home.file."${conf}lua/${username}/set.lua".text = ''

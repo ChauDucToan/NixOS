@@ -1,4 +1,4 @@
-{pkgs, lib, username,...}:
+{pkgs, lib, user,...}:
 {
     imports = [
         ./colors.nix
