@@ -2,7 +2,6 @@
 let
     username = "${user.info.username}";
     conf = "/home/${username}/.config/nvim/";
-    clangd = "${pkgs.llvmPackages_19.clang-unwrapped}/bin/clangd";
 in {
     home.file."${conf}lua/${username}/lazy/lsp.lua".text = ''
         return {
@@ -45,7 +44,7 @@ in {
                             offsetEncoding = { "utf-8", "utf-16" },
                         },
                         cmd = {
-                            "${clangd}",
+                            vim.env.CLANGD_PATH or "clangd",
                             "--background-index",
                             "--clang-tidy",
                             "--header-insertion=iwyu",

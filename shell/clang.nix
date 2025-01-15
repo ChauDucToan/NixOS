@@ -3,14 +3,15 @@
 pkgs.mkShell
 {
     nativeBuildInputs = with pkgs; [
-        clang
-        gcc
         clang-tools
+        clang
+        cmake
     ];
 
     shellHook = ''
-        echo "Hello oslamelon"
         cd ~/Desktop/C/
-        echo "to my shell!!!!" | ${pkgs.cowsay}/bin/cowsay
+        PATH="${pkgs.clang-tools}/bin:$PATH"
+        ln -sf "${pkgs.clang}/bin/clangd" "/home/oslamelon/.local/share/nvim/mason/bin/clangd"
+        ${pkgs.fortune}/bin/fortune | ${pkgs.cowsay}/bin/cowsay
     '';
 }

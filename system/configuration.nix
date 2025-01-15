@@ -109,21 +109,14 @@
     };
 
     # Define a user account. Don't forget to set a password with ‘passwd’.
-    users.users.${username} = {
+    users.users.${user.info.username} = {
         isNormalUser = true;
         extraGroups = [ "wheel" "docker" "gamemode" ]; # Enable ‘sudo’ for the user.
         packages = with pkgs; [ ];
     };
 
-    programs.nix-ld.enable = true;
-    programs.nix-ld.libraries = with pkgs; [
-        # Add any missing dynamic libraries for unpackaged programs
-        # here, NOT in environment.systemPackages
-        llvmPackages_19.clang-unwrapped
-    ]; 
     # List packages installed in system profile. To search, run:
     # $ nix search wget
-
     environment.systemPackages = with pkgs; [
         # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
         # llvmPackages_19.clang-tools

@@ -48,7 +48,7 @@ in {
             mpv
             obsidian
             nautilus
-            htop
+            fastfetch
             firefox
             vesktop
             obs-studio
