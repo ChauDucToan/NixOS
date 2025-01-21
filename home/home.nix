@@ -45,6 +45,7 @@ in {
             # # fonts?
             # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
 
+            staruml
             mpv
             obsidian
             nautilus

@@ -4,6 +4,7 @@
     imports = [ # Include the results of the hardware scan.
         ./hardware-configuration.nix
         ./tmux.nix
+        ./fonts.nix
     ];
 
     # Setup flake permanently
@@ -13,7 +14,7 @@
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
 
-    networking.hostName = "${user.info.username}"; # Define your hostname.
+    networking.hostName = "${user.info.username}" + "-nix"; # Define your hostname.
     networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
     # Set your time zone.
@@ -177,7 +178,6 @@
         wl-clipboard
         waybar
         swappy
-        gtk4
         kitty
         mako
         dunst

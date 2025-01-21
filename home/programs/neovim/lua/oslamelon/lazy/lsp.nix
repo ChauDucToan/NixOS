@@ -83,8 +83,7 @@ in {
                     ensure_installed = {
                         "bashls",
                         "jdtls",
-                        
-                        "textlsp",
+                        "clangd",
                     },
                 
                     handlers = {

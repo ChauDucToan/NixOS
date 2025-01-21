@@ -74,8 +74,9 @@
                 ];
             };
         };
-        devShells.${system}.default = (
-            import ./shell/clang.nix {inherit pkgs;}
-        );
+        devShells.${system} = {
+            default = ( import ./shell/clang.nix {inherit pkgs;} );
+            clang = ( import ./shell/clang.nix {inherit pkgs;} );
+        };
     };
 }
