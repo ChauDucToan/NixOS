@@ -40,9 +40,14 @@
         user = {
             info = {
                 username = "oslamelon";
+                hostname = "oslamelon";
             };
             system = "x86_64-linux";
             theme = "anby";
+            location = {
+                home = /home/oslamelon;
+                config = user.location.home + /.dotFiles;
+            };
         };
 
         username = "oslamelon";
@@ -75,8 +80,8 @@
             };
         };
         devShells.${system} = {
-            default = ( import ./shell/clang.nix {inherit pkgs;} );
-            clang = ( import ./shell/clang.nix {inherit pkgs;} );
+            default = ( import ./shell/clang.nix {inherit pkgs user;} );
+            clang = ( import ./shell/clang.nix {inherit pkgs user;} );
         };
     };
 }

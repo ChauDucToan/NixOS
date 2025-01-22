@@ -60,15 +60,26 @@
         graphics = {
             enable = true;
             enable32Bit = true;
+
+            extraPackages = with pkgs; [ 
+                vaapiIntel
+                intel-media-driver
+            ];
         };
 
         nvidia = { 
             modesetting.enable = true;
             open = false;
-
             nvidiaSettings = true;
 
+            prime = {
+                sync.enable = true;
+                
+                intelBusId = "PCI:0:2:0";
+                nvidiaBusId = "PCI:1:0:0";
+            };
             package = config.boot.kernelPackages.nvidiaPackages.stable;
+            forceFullCompositionPipeline = true;
         };
     };
 
@@ -131,6 +142,8 @@
         wineWowPackages.waylandFull
         cachix
 
+        mesa-demos
+        mesa
         vulkan-headers 
         vulkan-loader
 
@@ -187,7 +200,11 @@
         rofi
         lf
         dbus
+    ] ++ [
+        heroic
     ];
+
+
 
     programs.gamemode = {
         enable = true;
