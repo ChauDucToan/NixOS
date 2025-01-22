@@ -7,6 +7,5 @@
         ./treesitter.nix
         ./lualine.nix
         ./markview.nix
-        ./deadcolumn.nix
     ];
 }

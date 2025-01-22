@@ -5,18 +5,19 @@ let
     configPath = "/home/${username}/.config/nvim";
 
     pluginLib = import ./lazyPlugins.nix {inherit lib user;};
-    plugins = import ./plugins.nix { mkLazyPlugin = pluginLib.mkLazyPlugin;};
+    plugins = import ./plugins.nix { mkLazyPlugin = pluginLib.mkLazyPlugin; inherit pkgs;};
 
-    allDependencies = lib.lists.unique (lib.lists.flatten (map (p: p.pkgsDependencies) plugins));
-    allConfigFiles = lib.lists.flatten (map (p: [p.configFile]) plugins);
+    allDependencies = lib.lists.unique (lib.lists.flatten (map (p: p.pkgsDependencies) plugins.plugins));
+    allConfigFiles = lib.lists.flatten (map (p: [p.configFile]) plugins.plugins);
 in {
     imports = [
-        ./lua
+        ./lua/oslamelon
     ];
 
     home.packages = allDependencies;
 
     home.file = pkgs.lib.mkMerge [
+
         (lib.listToAttrs (map (cfg: {
             name = cfg.target;
             value = { inherit (cfg) text; };
@@ -29,5 +30,6 @@ in {
                 require("${username}")
             '';
         }
+
     ];
 }

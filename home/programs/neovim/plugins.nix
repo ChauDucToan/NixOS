@@ -22,5 +22,42 @@
             name = "ThePrimeagen/vim-be-good";
             lazy = false;
         })
+        (mkLazyPlugin {
+            name = "Bekaboo/deadcolumn.nvim";
+            init = ''
+                require("deadcolumn").setup({
+                    scope = function()
+                        local max = 0
+                        for i = -50, 50 do
+                            local len = vim.fn.strdisplaywidth(vim.fn.getline(vim.fn.line('.') + i))
+                            if len > max then
+                                max = len
+                            end
+                        end
+                        return max
+                    end,
+                    modes = function(mode)
+                        return mode:find('^[ictRss\x13]') ~= nil
+                    end,
+                    blending = {
+                        threshold = 0.75,
+                        colorcode = '#000000',
+                        hlgroup = { 'Normal', 'bg' },
+                    },
+                    warning = {
+                        alpha = 0.4,
+                        offset = 0,
+                        colorcode = '#FF0000',
+                        hlgroup = { 'Error', 'bg' },
+                    },
+                    extra = {
+                        follow_tw = "80",
+                    },
+                })
+
+                vim.opt.colorcolumn = "80"
+                vim.cmd([[ set termguicolors ]])
+            '';
+        })
     ];
 }
