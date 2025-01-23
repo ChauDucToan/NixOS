@@ -50,42 +50,42 @@
         };
 
     };
-    # console = {
-    #   font = "Lat2-Terminus16";
-    #   keyMap = "us";
-    #   useXkbConfig = true; # use xkb.options in tty.
-    # };
 
     hardware = {
         graphics = {
             enable = true;
             enable32Bit = true;
-
-            extraPackages = with pkgs; [ 
-                vaapiIntel
-                intel-media-driver
-            ];
         };
+	cpu = {
+	    amd = {
+		updateMicrocode = true;
+		sev.enable = true;
+		sevGuest.enable = true;
+	    };
+	};
 
-        nvidia = { 
-            modesetting.enable = true;
-            open = false;
-            nvidiaSettings = true;
-
-            prime = {
-                sync.enable = true;
-                
-                intelBusId = "PCI:0:2:0";
-                nvidiaBusId = "PCI:1:0:0";
-            };
-            package = config.boot.kernelPackages.nvidiaPackages.stable;
-            forceFullCompositionPipeline = true;
-        };
+	amdgpu = {
+	    initrd.enable = true;
+	    amdvlk = {
+		enable = true;
+		support32Bit.enable = true;
+		supportExperimental.enable = true;
+	    };
+	    opencl = {
+		enable = true;
+	    };
+	};
     };
+
+    services.auto-epp.enable = true;
+
+    programs.tuxclocker.enableAMD = true;
+    programs.ryzen-monitor-ng.enable = true;
+
 
     # Enable the X11 windowing system.
     services.xserver.enable = true;
-    services.xserver.videoDrivers = [ "nvidia" "modesetting" ];
+    services.xserver.videoDrivers = [ "amdgpu" "modesetting" ];
 
     # Enable the KDE Desktop Environment.
     services.displayManager.enable = true;
@@ -142,8 +142,6 @@
         wineWowPackages.waylandFull
         cachix
 
-        mesa-demos
-        mesa
         vulkan-headers 
         vulkan-loader
 
@@ -200,11 +198,7 @@
         rofi
         lf
         dbus
-    ] ++ [
-        heroic
     ];
-
-
 
     programs.gamemode = {
         enable = true;
@@ -253,7 +247,7 @@
     # accidentally delete configuration.nix.
     # system.copySystemConfiguration = true;
 
-    system.stateVersion = "24.05"; # Did you read the comment?
+    system.stateVersion = "24.11"; # Did you read the comment?
 
 }
 

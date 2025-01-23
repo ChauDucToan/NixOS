@@ -2,84 +2,92 @@
     description = "A nixos flake with anby theme";
 
     inputs = {
-        nix-gaming = {
-            url = "github:fufexan/nix-gaming";
-            inputs.nixpkgs.follows = "nixpkgs";
-        };
-
-        nvf = {
-            url = "github:notashelf/nvf";
-            inputs.nixpkgs.follows = "nixpkgs";
-        };
-
         nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
         home-manager = {
             url = "github:nix-community/home-manager";
             inputs.nixpkgs.follows = "nixpkgs";
         };
+
+        # Some others modules
+        nix-gaming = {
+            url = "github:fufexan/nix-gaming";
+            inputs.nixpkgs.follows = "nixpkgs";
+        };
         
+        # Install Wayland compositor
         hyprland = {
             url = "git+https://github.com/hyprwm/Hyprland";
             inputs.nixpkgs.follows = "nixpkgs";
         };
     };
 
-    outputs = { self, nix-gaming, nixpkgs, home-manager, hyprland, nvf, ... } @ inputs:
+    outputs = { self, nix-gaming, nixpkgs, home-manager, hyprland, ... } @ inputs:
     let
-        nixLib = nixpkgs.lib;
-        homeLib = home-manager.lib;
-
-        system = "x86_64-linux";
-
+        # This is way to install packages in Nix. You import from nixpkgs
+        # repostitory and add your system and allow some unfree applications
         pkgs = import nixpkgs {
-            system = "${system}";
+            system = user.info.system;
             config.allowUnfree = true;
         };
 
-        user = {
+        # You will only interact with this once. Set appropirate username,
+        # hostname and maybe theme
+        user = rec {
             info = {
+                # Set your username and hostname
                 username = "oslamelon";
                 hostname = "oslamelon";
+
+                # You can choose your own theme. I just have two theme:
+                # "anby": a ZZZ character
+                # "default": I don't know how to name it (WIP)
+                theme = "anby";
+
+                # This is just your customize profile and system type
+                # You can put system = pkgs.system if you know what you are
+                # doing
+                profile = "desktop";
+                system = "x86_64-linux";
             };
-            system = "x86_64-linux";
-            theme = "anby";
+
             location = {
-                home = /home/oslamelon;
-                config = user.location.home + /.dotFiles;
+                home = builtins.toPath "/home/${info.username}";
+                config = builtins.toPath "${location.home}/.dotFiles";
             };
         };
-
-        username = "oslamelon";
     in {
         nixosConfigurations = {
-            ${username} = nixLib.nixosSystem {
-            specialArgs = {  inherit inputs system user;  };
-            modules = [ 
-                ./system/configuration.nix 
-                nix-gaming.nixosModules.pipewireLowLatency
+            ${user.info.username} = nixpkgs.lib.nixosSystem {
+                specialArgs = {  inherit inputs user;  };
+                modules = [ 
+                    (./. + "/hosts/${user.info.profile}/configuration.nix")
 
-                {
-                    nix.settings = {
-                        substituters = [ "https://nix-gaming.cachix.org" ];
-                        trusted-public-keys = ["nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="];
-                    };
-                }
+                    nix-gaming.nixosModules.pipewireLowLatency
 
-            ];
+                    {
+                        nix.settings = {
+                            substituters = [ "https://nix-gaming.cachix.org" ];
+                            trusted-public-keys = ["nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="];
+                        };
+                    }
+
+                ];
+            };
         };
-    };
         homeConfigurations = {
-            ${username} = homeLib.homeManagerConfiguration {
+            ${user.info.username} = home-manager.lib.homeManagerConfiguration {
                 inherit pkgs;
                 extraSpecialArgs = {  inherit inputs user;  };
                 modules = [  
                     hyprland.homeManagerModules.default
-                    ./home/home.nix
+
+                    (./. + "/home/${user.info.username}/home.nix")
                 ];
             };
         };
-        devShells.${system} = {
+        # Making develop shell
+        devShells.${user.info.system} = {
             default = ( import ./shell/clang.nix {inherit pkgs user;} );
             clang = ( import ./shell/clang.nix {inherit pkgs user;} );
         };

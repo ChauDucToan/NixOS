@@ -60,7 +60,7 @@ in {
             '')
 
             (writeShellScriptBin "my-md-template" (
-                builtins.readFile ../conf/Bin/makeTemplatesmd.bash)
+                builtins.readFile ../../conf/Bin/makeTemplatesmd.bash)
             )
         ];
 
@@ -73,9 +73,9 @@ in {
 
             # "${conf}nvim/init.lua".source = ../conf/nvim/init.lua;
             # "${conf}nvim/lua".source = ../conf/nvim/lua;
-            "${conf}waybar".source = ../conf/waybar;
-            "${conf}kitty".source = ../conf/kitty;
-            "${conf}hypr".source = ../conf/hypr;
+            "${conf}waybar".source = ../../conf/waybar;
+            "${conf}kitty".source = ../../conf/kitty;
+            "${conf}hypr".source = ../../conf/hypr;
 
             # # You can also set the file content immediately.
             # ".gradle/gradle.properties".text = ''
