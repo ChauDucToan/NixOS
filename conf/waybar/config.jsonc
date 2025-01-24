@@ -86,8 +86,8 @@
             "class<firefox> title<.*youtube.*?>": " ",
             "class<.*@oslamelon.*>": " ",
             "class<.*@oslamelon.*> title<.*Coding.*>": " ",
-            "class<.*@oslamelon.*> title<.*dotFiles.*>": " ",
-	},
+            "class<.*@oslamelon.*> title<.*dotFiles.*>": " "
+        }
     },
     "mpd": {
         "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
@@ -220,6 +220,6 @@
     },
     "custom/power": {
         "format" : " ⏻ ",
-        "on-click": "exit"
+        "on-click": "shutdown -h now"
     }
 }

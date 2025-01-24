@@ -210,6 +210,7 @@
             
         gtk4
     ] ++ [
+        mpd
         egl-wayland
         kdePackages.wayland-protocols
         xwayland

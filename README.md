@@ -9,9 +9,11 @@
 │       ├── core.nix   # Base Neovim config
 │       ├── plugins/   # Individual plugin modules
 │       └── deps.nix   # System dependencies
-└── home/              # User-level configs
-    └── ${USERNAME}/
-        └── neovim/    # Your personal Neovim customizations
+├── home/              # User-level configs
+│     └── ${USERNAME}/
+│         └── neovim/  # Your personal Neovim customizations
+└── dev/
+      └── clangd/      # Development shell
 # Neovim tree
 nvim/
 ├── init.lua           # Entry point for each user and include to different config
