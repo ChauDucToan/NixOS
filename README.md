@@ -1,26 +1,34 @@
-# NixOS tree
+# NixOS config
+These are my dotfiles (configuration files) for my NixOS. There still are a lot
+of mistakes and improve so stay tune for my new updates.
+
+## NixOS tree
+```
 ~/nix-config
 ├── flake.nix          # Entry point
-├── hosts/             # Machine-specific configs
-│   └── ${HOSTNAME}/    
-│       └── tmux/      # System-invole modules
+├── hosts/             # System-specific configs
+│   └── ${HOSTNAME}/
+│       └── tmux/
 ├── modules/           # Reusable NixOS modules
-│   └── neovim/        # Our focus area
-│       ├── core.nix   # Base Neovim config
-│       ├── plugins/   # Individual plugin modules
-│       └── deps.nix   # System dependencies
+│   └── neovim/
+│       ├── core.nix
+│       ├── plugins/
+│       └── deps.nix
 ├── home/              # User-level configs
 │     └── ${USERNAME}/
-│         └── neovim/  # Your personal Neovim customizations
-└── dev/
-      └── clangd/      # Development shell
-# Neovim tree
+│         └── neovim/
+└── dev/               # Development shell
+      └── clangd/
+```
+## Neovim tree
+```
 nvim/
-├── init.lua           # Entry point for each user and include to different config
+├── init.lua           # Entry point for each user's configs
 └── lua/               # Machine-specific configs
-    └── ${CONFIG}/    
+    └── ${CONFIG}/
         ├── lazy/      # Include all plugins
         │   └── vimtex.lua    
         ├── init.lua
         ├── remap.lua
         └── set.lua 
+```

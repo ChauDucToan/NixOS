@@ -126,6 +126,25 @@
         };
     };
 
+    services.mpd = {
+        enable = true;
+        musicDirectory = "/home/${user.info.username}/Music";
+        extraConfig = ''
+            audio_output {
+                type "pipewire"
+                name "My PipeWire Output"
+            }
+        '';
+        user = "${user.info.username}";
+        network.listenAddress = "any"; # if you want to allow non-localhost connections
+        startWhenNeeded = true; # systemd feature: only start MPD service upon connection to its socket
+    };
+
+    systemd.services.mpd.environment = {
+        # https://gitlab.freedesktop.org/pipewire/pipewire/-/issues/609
+        XDG_RUNTIME_DIR = "/run/user/${toString config.users.users.${user.info.username}.uid}"; # User-id must match above user. MPD will look inside this directory for the PipeWire socket.
+    };
+
     # make pipewire realtime-capable
     security.rtkit.enable = true;
         security.polkit = {
@@ -137,6 +156,7 @@
         isNormalUser = true;
         extraGroups = [ "wheel" "docker" "gamemode" ]; # Enable ‘sudo’ for the user.
         packages = with pkgs; [ ];
+        uid = 1000;
     };
 
     # List packages installed in system profile. To search, run:
@@ -210,7 +230,11 @@
             
         gtk4
     ] ++ [
+        mpc
         mpd
+        pavucontrol
+        ncmpcpp
+        rmpc
         egl-wayland
         kdePackages.wayland-protocols
         xwayland

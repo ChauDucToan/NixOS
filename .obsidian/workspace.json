@@ -1,24 +1,20 @@
 {
   "main": {
-    "id": "4fbab94ea0c02c54",
+    "id": "966b27a2cd5ef028",
     "type": "split",
     "children": [
       {
-        "id": "f7e04d1a66ace243",
+        "id": "3e8e01a90c420797",
         "type": "tabs",
         "children": [
           {
-            "id": "1b5030302d9b266e",
+            "id": "111088edad3755e5",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "README.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "README"
+              "title": "New tab"
             }
           }
         ]
@@ -27,15 +23,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "ec1e60ffd7bccfa8",
+    "id": "b5362ea0354a1029",
     "type": "split",
     "children": [
       {
-        "id": "c33c8dbfabc75a21",
+        "id": "7fcc411db59d7c30",
         "type": "tabs",
         "children": [
           {
-            "id": "387406abdba49fd1",
+            "id": "463904c84ae1f860",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -47,7 +43,7 @@
             }
           },
           {
-            "id": "4892e8ac83211027",
+            "id": "8161a116103810cf",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -64,7 +60,7 @@
             }
           },
           {
-            "id": "c0b64868a4b292d6",
+            "id": "ebacf1fbea4a92fd",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -80,20 +76,19 @@
     "width": 300
   },
   "right": {
-    "id": "c57714904d284c3a",
+    "id": "d8dd2adf2b5e1d48",
     "type": "split",
     "children": [
       {
-        "id": "acc9e3092c6ec621",
+        "id": "860e49556c24c9f3",
         "type": "tabs",
         "children": [
           {
-            "id": "f7d99e945334fb41",
+            "id": "afac4b695f00013b",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,25 +98,24 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for README"
+              "title": "Backlinks"
             }
           },
           {
-            "id": "a24bfdf6dc6d3bf1",
+            "id": "61189c30fbe76db2",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from README"
+              "title": "Outgoing links"
             }
           },
           {
-            "id": "725251e725579852",
+            "id": "07f7e37ff1cfaadb",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -134,15 +128,13 @@
             }
           },
           {
-            "id": "a4ffdbb1f28bb30f",
+            "id": "e4d3f704a2a4fe6f",
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "README.md"
-              },
+              "state": {},
               "icon": "lucide-list",
-              "title": "Outline of README"
+              "title": "Outline"
             }
           }
         ]
@@ -162,6 +154,6 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "1b5030302d9b266e",
+  "active": "111088edad3755e5",
   "lastOpenFiles": []
 }

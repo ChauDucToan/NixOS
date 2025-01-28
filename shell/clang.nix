@@ -4,7 +4,8 @@ pkgs.mkShell {
         clang-tools
         clang
         cmake
-        (import ("${builtins.toString user.location.config}/packages/gmp.nix") {inherit pkgs;})
+        # (import ("${builtins.toString user.location.config}/packages/gmp.nix") {inherit pkgs;})
+        gmp
     ];
     
     BuildInputs = [
