@@ -13,6 +13,7 @@
     # Use the systemd-boot EFI boot loader.
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
+    boot.kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
 
     networking.hostName = "${user.info.username}" + "-nix"; # Define your hostname.
     networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
@@ -66,6 +67,7 @@
                 intel-ocl
                 intel-media-driver
                 libvdpau-va-gl
+                nvidia-vaapi-driver
             ];
         };
 
@@ -73,6 +75,10 @@
             modesetting.enable = true;
             open = false;
             nvidiaSettings = true;
+            powerManagement = {
+                enable = false;
+                finegrained = false;
+            };
 
             prime = {
                 sync.enable = true;
@@ -169,9 +175,9 @@
         libmad
 
         libGLU
-        linuxKernel.packages.linux_xanmod_stable.nvidia_x11
-        linuxKernel.packages.linux_xanmod_stable.system76
-        linuxKernel.packages.linux_xanmod_stable.system76-io
+        linuxKernel.packages.linux_xanmod_latest.nvidia_x11
+        linuxKernel.packages.linux_xanmod_latest.system76
+        linuxKernel.packages.linux_xanmod_latest.system76-io
         cudaPackages.libnvidia_nscq
         nvidia-vaapi-driver
         nvidia_oc
@@ -229,28 +235,38 @@
         texliveFull
             
         gtk4
+        mangohud
+        protonup
+        bottles
     ] ++ [
         mpc
         mpd
         pavucontrol
         ncmpcpp
         rmpc
+
         egl-wayland
         kdePackages.wayland-protocols
         xwayland
+
         wl-clipboard
         waybar
-        swappy
+
         kitty
+
+        lf
+
+        swappy
         mako
         dunst
         grim
         slurp
         swww
         rofi
-        lf
         dbus
     ];
+
+    # environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
     programs.gamemode = {
         enable = true;
@@ -265,6 +281,10 @@
     programs.neovim = {
         enable = true;
         defaultEditor = true;
+    };
+
+    environment.sessionVariables = {
+        STEAM_EXTRA_COMPAT_TOOLS_PATHS = "/home/${user.info.username}/.steam/root/compatibilitytools.d";
     };
 
     virtualisation.docker = {
