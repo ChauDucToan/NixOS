@@ -1,6 +1,6 @@
 {config, lib, pkgs, ...}: with lib; let
     cfg = config.services.swww;
-    wallpaperPath = "${config.home.homeDirectory}/conf/Pictures/${cfg.wallpaper}";
+    wallpaperPath = "${config.home.homeDirectory}/.dotFiles/conf/Pictures/${cfg.wallpaper}";
 in {
     options.services.swww.enable = mkOption {
         type = types.bool;
@@ -23,14 +23,13 @@ in {
             Unit = {
                 Description = "Set wallpaper using swww";
                 After = [ "graphical-session.target" ]; # Runs after login
+            };
+            Install = {
                 WantedBy = [ "default.target" ];
             };
             Service = {
                 ExecStart = "${pkgs.bash}/bin/bash -c 'if [ -f ${wallpaperPath} ]; then ${pkgs.swww}/bin/swww img ${wallpaperPath}; fi'";
-                Restart = "always";
             };
         };
     };
-
-
 }
