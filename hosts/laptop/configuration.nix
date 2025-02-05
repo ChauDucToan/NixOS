@@ -52,21 +52,32 @@
         };
         cpu = {
             amd = {
-            updateMicrocode = true;
-            sev.enable = true;
-            sevGuest.enable = true;
+                updateMicrocode = true;
+                sev.enable = true;
+                sevGuest.enable = true;
             };
         };
 
         amdgpu = {
             initrd.enable = true;
             amdvlk = {
-            enable = true;
-            support32Bit.enable = true;
-            supportExperimental.enable = true;
+                enable = true;
+                support32Bit = {
+                    enable = true;
+                    package = pkgs.driversi686Linux.amdvlk;
+                };
+                supportExperimental.enable = true;
+                package = pkgs.amdvlk;
+                settings = {
+                    AllowVkPipelineCachingToDisk = 1;
+                    EnableVmAlwaysValid = 1;
+                    IFH = 0;
+                    IdleAfterSubmitGpuMask = 1;
+                    ShaderCacheMode = 1;
+                };
             };
             opencl = {
-            enable = true;
+                enable = true;
             };
         };
     };
@@ -74,9 +85,11 @@
     programs.tuxclocker.enableAMD = true;
     programs.ryzen-monitor-ng.enable = true;
 
+    systemd.tmpfiles.rules = [ "L+    /opt/rocm/hip   -    -    -     -    ${pkgs.rocmPackages.clr}" ];
+
     # Enable the X11 windowing system.
     services.xserver.enable = true;
-    services.xserver.videoDrivers = [ "amdgpu" "amdgpu-pro" "modesetting" ];
+    services.xserver.videoDrivers = [ "modesetting" ];
 
     # Enable the GNOME Desktop Environment.
     services.xserver.displayManager.gdm.enable = true;
@@ -89,18 +102,26 @@
     };
 
     i18n.inputMethod = {
-        type = "ibus";
+        type = "fcitx5";
         enable = true;
-  
-        ibus = {
-            engines = with pkgs.ibus-engines; [
-                bamboo
+
+        fcitx5 = {
+            waylandFrontend = true;
+            addons = with pkgs; [
+                fcitx5-unikey
+                fcitx5-with-addons
             ];
         };
     };
 
     # Enable CUPS to print documents.
-    services.printing.enable = true;
+    services.printing = {
+        enable = true;
+        drivers = with pkgs; [
+            hplipWithPlugin
+            hplip
+        ];
+    };
 
     # Enable sound with pipewire.
     services.pulseaudio.enable = false;
@@ -140,15 +161,78 @@
     # List packages installed in system profile. To search, run:
     # $ nix search wget
     environment.systemPackages = with pkgs; [
-    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+        vulkan-tools
+        mesa
+        libGLU
+
         go
+        python314
+        libgcc
+        gcc14
+
         gtk4
+
         git
-        #  wget
+        gitless
+
+        nix
+
+        libnotify
+        libjpeg
+        cups
+        ghostscript
+        xsane
+        sane-backends
+        cups-pk-helper
+        libusbp
+        unzip
+
+        wget # Need for mason.nvim
+        curl # Need for mason.nvim
+
+        fragments
+        gparted
+        nautilus
+        komikku
+        wike
+        gaphor
+
+        gnome-builder
+        gnome-console
+        gnome-decoder
+        gnome-desktop
+        gnome-bluetooth
+        gnomeExtensions.kimpanel
+        gnomeExtensions.cronomix
+        gnomeExtensions.app-hider
+        gnomeExtensions.alternate-menu-for-hplip2
     ];
+
+    fonts = {
+        enableDefaultPackages = true;
+        packages = with pkgs; [ 
+            # noto-fonts
+            # noto-fonts-cjk-serif
+            # noto-fonts-cjk-sans
+            nerd-fonts.noto
+            nerd-fonts.symbols-only
+        ];
+
+    };
 
     programs.gamemode = {
         enable = true;
+    };
+
+    programs.hyprland = {
+        enable = true;
+        package = inputs.hyprland.packages.${user.info.system}.hyprland;
+        xwayland.enable = true;
+    };
+
+    programs.neovim = {
+        enable = true;
+        defaultEditor = true;
     };
     # Some programs need SUID wrappers, can be configured further or are
     # started in user sessions.

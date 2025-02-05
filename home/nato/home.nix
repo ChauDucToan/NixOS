@@ -1,10 +1,16 @@
 { config, pkgs, user, ... }:
-
-{
+let
+    conf = "/home/nato/.config/";
+in {
     # Home Manager needs a bit of information about you and the paths it should
     # manage.
     home.username = "nato";
     home.homeDirectory = "/home/nato";
+
+    imports = [
+        ./config
+        ./programs
+    ];
 
     # This value determines the Home Manager release that your configuration is
     # compatible with. This helps avoid breakage when a new Home Manager release
@@ -29,7 +35,6 @@
         vesktop
         obs-studio
         libreoffice-qt6-fresh
-        neovim
         kanata
     
         # # It is sometimes useful to fine-tune packages, for example, by applying
@@ -44,6 +49,10 @@
         (pkgs.writeShellScriptBin "my-hello" ''
             echo "Hello, ${config.home.username}!"
         '')
+
+        (writeShellScriptBin "my-md-template" (
+            builtins.readFile ../../conf/Bin/makeTemplatesmd.bash)
+        )
     ];
 
     # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -59,6 +68,10 @@
         #   org.gradle.console=verbose
         #   org.gradle.daemon.idletimeout=3600000
         # '';
+
+        "${conf}waybar".source = ../../conf/waybar;
+        "${conf}kitty".source = ../../conf/kitty;
+        "${conf}hypr".source = ../../conf/hypr;
     };
 
     # Home Manager can also manage your environment variables through
@@ -78,19 +91,11 @@
     #  /etc/profiles/per-user/nato/etc/profile.d/hm-session-vars.sh
     #
     home.sessionVariables = {
-        GTK_IM_MODULE = "ibus";
-        QT_IM_MODULE = "ibus";
-        SDL_IM_MODULE= "ibus";
+        GTK_IM_MODULE = "fcitx";
+        QT_IM_MODULE = "fcitx";
+        SDL_IM_MODULE= "fcitx";
         GLFW_IM_MODULE="ibus";
-        XMODIFIERS = "@im=ibus";
-    };
-
-    programs.bash = {
-        enable = true;
-        shellAliases = {
-            ll = "ls -l";
-            ".." = "cd ..";
-        };
+        XMODIFIERS = "@im=fcitx";
     };
 
     # Let Home Manager install and manage itself.
