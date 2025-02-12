@@ -1,13 +1,28 @@
-{
+{user,...}: {
     imports = [
         ./cursor.nix
+        ./discord.nix
+        ./firefox.nix
+        ./hyprland.nix
+        ./neovim.nix
         ./wallpaper.nix
     ];
 
-    programs.home-manager.enable = true;
+    programs = {
+        # Let Home Manager install and manage itself.
+        home-manager.enable = true;
+        git.enable = true;
+    };
+
     home = {
-        username = "nato";
-        homeDirectory = "/home/nato";
-        stateVersion = "24.05";
+        username = user.info.username;
+        homeDirectory = user.location.home;
+        stateVersion = user.info.stateVersion;
+    };
+
+    users.users.${user.info.username} = {
+        isNormalUser = true;
+        extraGroups = [ "wheel" "docker" "gamemode" ];
+        uid = 1000;
     };
 }

@@ -8,9 +8,6 @@
     boot.loader.efi.canTouchEfiVariables = true;
     boot.kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
 
-    networking.hostName = "${user.info.username}" + "-nix"; # Define your hostname.
-    networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
-
     hardware = {
         graphics = {
             enable = true;
@@ -66,15 +63,6 @@
 
     # Configure keymap in X11
     services.xserver.xkb.layout = "us";
-    # services.xserver.xkb.options = "eurosign:e,caps:escape";
-
-    # Define a user account. Don't forget to set a password with ‘passwd’.
-    users.users.${user.info.username} = {
-        isNormalUser = true;
-        extraGroups = [ "wheel" "docker" "gamemode" ]; # Enable ‘sudo’ for the user.
-        packages = with pkgs; [ ];
-        uid = 1000;
-    };
 
     # List packages installed in system profile. To search, run:
     # $ nix search wget
@@ -134,9 +122,6 @@
         libgcc
         gcc14
 
-        docker
-        docker-compose
-
         postgresql
 
         jdk17
@@ -169,21 +154,7 @@
         dunst
         grim
         slurp
-        swww
         rofi
         dbus
     ];
-
-    programs.hyprland = {
-        enable = true;
-        package = inputs.hyprland.packages.${user.info.system}.hyprland;
-        xwayland.enable = true;
-    };
-
-    programs.neovim = {
-        enable = true;
-        defaultEditor = true;
-    };
-
-    system.stateVersion = "24.05"; # Did you read the comment?
 }
