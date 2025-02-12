@@ -1,5 +1,5 @@
 {
-    description = "A nixos flake with anby theme";
+    description = "A basic nixos flake of a beginner in linux";
 
     inputs = {
         nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -26,6 +26,7 @@
     let
         # This is way to install packages in Nix. You import from nixpkgs
         # repostitory and add your system and allow some unfree applications
+        # such as Obsidian.
         pkgs = import nixpkgs {
             system = user.info.system;
             config.allowUnfree = true;
@@ -40,15 +41,15 @@
                 hostname = "oslamelon";
 
                 # You can choose your own theme. I just have two theme:
-                # "anby": a ZZZ character
+                # "anby": a ZZZ character because I think her cool :)
                 # "default": I don't know how to name it (WIP)
                 theme = "anby";
 
-                # This is just your customize profile and system type
+                # This is just your customize stateVersion and system type
                 # You can put system = pkgs.system if you know what you are
                 # doing
-                profile = "desktop";
                 system = "x86_64-linux";
+                stateVersion = "24.05";
             };
 
             location = {
@@ -61,7 +62,7 @@
             ${user.info.username} = nixpkgs.lib.nixosSystem {
                 specialArgs = {  inherit inputs user;  };
                 modules = [ 
-                    (./. + "/hosts/${user.info.profile}/configuration.nix")
+                    (./. + "/hosts")
 
                     nix-gaming.nixosModules.pipewireLowLatency
 
@@ -82,14 +83,19 @@
                 modules = [  
                     hyprland.homeManagerModules.default
 
-                    (./. + "/home/${user.info.username}/home.nix")
+                    (./. + "/hosts/")
                 ];
             };
         };
         # Making develop shell
         devShells.${user.info.system} = {
-            default = ( import ./shell/clang.nix {inherit pkgs user;} );
-            clang = ( import ./shell/clang.nix {inherit pkgs user;} );
+            # You can run default Shell by using:
+            # nix develop
+            default = ( import ./dev/clang.nix {inherit pkgs user;} );
+
+            # Or you can run custom Shell by using:
+            # nix develop #shellName
+            clang = ( import ./dev/clang.nix {inherit pkgs user;} );
         };
     };
 }

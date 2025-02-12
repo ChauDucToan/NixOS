@@ -1,0 +1,12 @@
+{pkgs, inputs, ...}: {
+
+    imports = [
+        ./bash.nix
+        ./osu.nix
+        ./blender.nix
+        ./neovim
+        ./roblox.nix
+        ./wine.nix
+    ];
+
+}

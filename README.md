@@ -8,15 +8,14 @@ of mistakes and improve so stay tune for my new updates.
 ├── flake.nix          # Entry point
 ├── hosts/             # System-specific configs
 │   └── ${HOSTNAME}/
-│       └── tmux/
+│       ├── tmux/
+│       └── home.nix
 ├── modules/           # Reusable NixOS modules
-│   └── neovim/
-│       ├── core.nix
-│       ├── plugins/
-│       └── deps.nix
-├── home/              # User-level configs
-│     └── ${USERNAME}/
-│         └── neovim/
+│   ├── nixOSModules/  # System-wide modules
+│   │   └── neovim/
+│   └── homeManagerModules/
+│       ├── swww/default.nix
+│       └── kitty/
 └── dev/               # Development shell
       └── clangd/
 ```
