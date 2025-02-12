@@ -60,9 +60,9 @@
     in {
         nixosConfigurations = {
             ${user.info.username} = nixpkgs.lib.nixosSystem {
-                specialArgs = {  inherit inputs user;  };
+                specialArgs = {  inherit pkgs inputs user;  };
                 modules = [ 
-                    (./. + "/hosts")
+                    (./. + "/hosts/${user.info.username}")
 
                     nix-gaming.nixosModules.pipewireLowLatency
 
@@ -83,7 +83,7 @@
                 modules = [  
                     hyprland.homeManagerModules.default
 
-                    (./. + "/hosts/home.nix")
+                    (./. + "/hosts/${user.info.username}/home.nix")
                 ];
             };
         };

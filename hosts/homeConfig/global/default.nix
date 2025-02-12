@@ -2,7 +2,6 @@
     imports = [
         ./bash.nix
         ./cursor.nix
-        ./default.nix
         ./discord.nix
         ./firefox.nix
         ./hyprland.nix

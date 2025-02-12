@@ -1,7 +1,8 @@
 {inputs, user, ...}: {
-    programs.hyprland = {
+    wayland.windowManager.hyprland = {
         enable = true;
         package = inputs.hyprland.packages.${user.info.system}.hyprland;
+        portalPackage = inputs.hyprland.packages.${user.info.system}.xdg-desktop-portal-hyprland;
         xwayland.enable = true;
     };
 

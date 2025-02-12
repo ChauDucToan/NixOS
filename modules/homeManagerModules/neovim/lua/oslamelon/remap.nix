@@ -21,19 +21,10 @@ in {
 
         vim.keymap.set("n", "<leader>f", "$V%zf")
 
-        vim.keymap.set("n", "<leader>t", function()
-            fileName = vim.fn.expand("%:t:r")
-            vim.cmd(string.format('!my-md-template %s', fileName))
-        end
-        )
-
-
-        --int main()  {
-            -- for (int i = 0; i < fdsjafkls; i++) {
-                --
-                --
-                --
-                -- }
-        --}
+        -- vim.keymap.set("n", "<leader>t", function()
+        --     fileName = vim.fn.expand("%:t:r")
+        --     vim.cmd(string.format('!my-md-template %s', fileName))
+        -- end
+        -- )
         '';
 }

@@ -149,10 +149,6 @@
         xwayland
 
         wl-clipboard
-        waybar
-
-        kitty
-
         lf
 
         swappy

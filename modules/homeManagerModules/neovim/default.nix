@@ -14,9 +14,7 @@ in {
         ./lua/oslamelon
     ];
 
-    home.packages = [
-        allDependencies
-    ];
+    home.packages = allDependencies;
 
     home.file = pkgs.lib.mkMerge [
 
