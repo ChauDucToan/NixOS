@@ -1,6 +1,12 @@
 { config, lib, inputs, user, pkgs, ... }: {
     imports = [ # Include the results of the hardware scan.
         ./hardware-configuration.nix
+        ../systemConfig/global
+        ../systemConfig/optional/docker.nix
+        ../systemConfig/optional/mpd.nix
+        ../systemConfig/optional/gamemode.nix
+        ../systemConfig/optional/mysql.nix
+        ../systemConfig/optional/tmux.nix
     ];
 
     # Use the systemd-boot EFI boot loader.

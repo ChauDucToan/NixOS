@@ -1,11 +1,15 @@
 {user,...}: {
     imports = [
+        ./bash.nix
         ./cursor.nix
+        ./default.nix
         ./discord.nix
         ./firefox.nix
         ./hyprland.nix
+        ./kitty.nix
         ./neovim.nix
         ./wallpaper.nix
+        ./waybar.nix
     ];
 
     programs = {
@@ -18,11 +22,5 @@
         username = user.info.username;
         homeDirectory = user.location.home;
         stateVersion = user.info.stateVersion;
-    };
-
-    users.users.${user.info.username} = {
-        isNormalUser = true;
-        extraGroups = [ "wheel" "docker" "gamemode" ];
-        uid = 1000;
     };
 }

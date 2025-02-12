@@ -83,7 +83,7 @@
                 modules = [  
                     hyprland.homeManagerModules.default
 
-                    (./. + "/hosts/")
+                    (./. + "/hosts/home.nix")
                 ];
             };
         };

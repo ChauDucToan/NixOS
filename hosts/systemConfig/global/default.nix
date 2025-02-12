@@ -7,7 +7,13 @@
         ./pipewire.nix
     ];
 
-    networking.hostName = user.info.hostName;
+    users.users.${user.info.username} = {
+        isNormalUser = true;
+        extraGroups = [ "wheel" "docker" "gamemode" ];
+        uid = 1000;
+    };
+
+    networking.hostName = user.info.hostname;
     networking.networkmanager.enable = true;
 
     system.stateVersion = user.info.stateVersion;

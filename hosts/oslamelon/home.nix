@@ -1,5 +1,11 @@
 { inputs, config, user, pkgs, ... }: {
     imports = [
+        ../homeConfig/global
+        ../homeConfig/optional/libreOffice.nix
+        ../homeConfig/optional/nautilus.nix
+        ../homeConfig/optional/obs.nix
+        ../homeConfig/optional/osu.nix
+        ../homeConfig/optional/obsidian.nix
     ];
 
     home = {
@@ -12,7 +18,7 @@
             '')
 
             (writeShellScriptBin "my-md-template" (
-                builtins.readFile ../../conf/Bin/makeTemplatesmd.bash)
+                builtins.readFile ../../../conf/Bin/makeTemplatesmd.bash)
             )
         ];
     };
