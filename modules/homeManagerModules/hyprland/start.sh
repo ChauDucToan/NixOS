@@ -4,7 +4,7 @@
 swww-daemon &
 
 # setting wallpaper
-swww img ~/.dotFiles/conf/Pictures/anby.jpg &
+swww img ~/Pictures/anby.png &
 
 #the bar
 waybar &

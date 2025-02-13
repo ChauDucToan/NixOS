@@ -16,10 +16,6 @@
             (writeShellScriptBin "my-hello" ''
                 echo "Hello, ${config.home.username}!"
             '')
-
-            # (writeShellScriptBin "my-md-template" (
-            #     builtins.readFile ../../../modules/homeManagerModules/bin/makeTemplatesmd.bash)
-            # )
         ];
     };
 }

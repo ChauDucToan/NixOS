@@ -149,6 +149,8 @@
         xwayland
 
         wl-clipboard
+        waybar
+
         lf
 
         swappy

@@ -5,11 +5,13 @@
         ./locale.nix
         ./nix.nix
         ./pipewire.nix
+        ./hyprland.nix
     ];
 
+    nixpkgs.config.allowUnfree = true;
     users.users.${user.info.username} = {
         isNormalUser = true;
-        extraGroups = [ "wheel" "docker" "gamemode" ];
+        extraGroups = [ "networkmanager" "wheel" "docker" "gamemode" ];
         uid = 1000;
     };
 

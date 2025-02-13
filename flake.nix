@@ -60,7 +60,7 @@
     in {
         nixosConfigurations = {
             ${user.info.username} = nixpkgs.lib.nixosSystem {
-                specialArgs = {  inherit pkgs inputs user;  };
+                specialArgs = {  inherit inputs user;  };
                 modules = [ 
                     (./. + "/hosts/${user.info.username}")
 

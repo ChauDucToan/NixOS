@@ -1,15 +1,13 @@
-{ config, pkgs, user, ... }:
-let
-    conf = "/home/nato/.config/";
-in {
+{ config, pkgs, user, ... }: {
     # Home Manager needs a bit of information about you and the paths it should
     # manage.
-    home.username = "nato";
-    home.homeDirectory = "/home/nato";
-
     imports = [
-        ./config
-        ./programs
+        ../homeConfig/global
+        ../homeConfig/optional/libreOffice.nix
+        ../homeConfig/optional/nautilus.nix
+        ../homeConfig/optional/obs.nix
+        ../homeConfig/optional/osu.nix
+        ../homeConfig/optional/obsidian.nix
     ];
 
     # This value determines the Home Manager release that your configuration is
@@ -19,7 +17,6 @@ in {
     # You should not change this value, even if you update Home Manager. If you do
     # want to update the value, then make sure to first check the Home Manager
     # release notes.
-    home.stateVersion = "24.11"; # Please read the comment before changing.
 
     # The home.packages option allows you to install Nix packages into your
     # environment.
@@ -28,13 +25,7 @@ in {
         # # "Hello, world!" when run.
         # pkgs.hello
         mpv
-        obsidian
-        nautilus
         fastfetch
-        firefox
-        vesktop
-        obs-studio
-        libreoffice-qt6-fresh
         kanata
     
         # # It is sometimes useful to fine-tune packages, for example, by applying
@@ -49,10 +40,6 @@ in {
         (pkgs.writeShellScriptBin "my-hello" ''
             echo "Hello, ${config.home.username}!"
         '')
-
-        (writeShellScriptBin "my-md-template" (
-            builtins.readFile ../../conf/Bin/makeTemplatesmd.bash)
-        )
     ];
 
     # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -69,9 +56,6 @@ in {
         #   org.gradle.daemon.idletimeout=3600000
         # '';
 
-        "${conf}waybar".source = ../../conf/waybar;
-        "${conf}kitty".source = ../../conf/kitty;
-        "${conf}hypr".source = ../../conf/hypr;
     };
 
     # Home Manager can also manage your environment variables through
@@ -90,14 +74,6 @@ in {
     #
     #  /etc/profiles/per-user/nato/etc/profile.d/hm-session-vars.sh
     #
-    home.sessionVariables = {
-        GTK_IM_MODULE = "fcitx";
-        QT_IM_MODULE = "fcitx";
-        SDL_IM_MODULE= "fcitx";
-        GLFW_IM_MODULE="ibus";
-        XMODIFIERS = "@im=fcitx";
-    };
 
     # Let Home Manager install and manage itself.
-    programs.home-manager.enable = true;
 }
