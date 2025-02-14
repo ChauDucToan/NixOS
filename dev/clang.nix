@@ -1,5 +1,6 @@
 { pkgs ? import <nixpkgs> {}, user, ...}@inputs:
 pkgs.mkShell {
+    name = "c/c++-env";
     nativeBuildInputs = with pkgs; [
         clang-tools
         clang

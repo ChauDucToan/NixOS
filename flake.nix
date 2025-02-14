@@ -96,6 +96,7 @@
             # Or you can run custom Shell by using:
             # nix develop #shellName
             clang = ( import ./dev/clang.nix {inherit pkgs user;} );
+            dotnet = ( import ./dev/dotnet.nix {inherit pkgs user;} );
         };
     };
 }

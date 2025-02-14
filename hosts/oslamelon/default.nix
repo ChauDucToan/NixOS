@@ -88,7 +88,6 @@
         nvidia-optical-flow-sdk
         nvidia-texture-tools
 
-        dotnet-sdk
         wineWowPackages.waylandFull
         cachix
 
@@ -138,6 +137,8 @@
         mangohud
         protonup
         bottles
+        winetricks
+        wineWowPackages.stable
     ] ++ [
         mpc
         pavucontrol
@@ -160,5 +161,8 @@
         slurp
         rofi
         dbus
+        vscode
     ];
+    
+    programs.nix-ld.enable = true;
 }
