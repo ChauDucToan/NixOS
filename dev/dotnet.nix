@@ -14,14 +14,13 @@ pkgs.mkShell rec{
         dotnet-pkgs
     ];
 
-    NIX_LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath ([
-        pkgs.stdenv.cc.cc
-    ] ++ deps);
-    NIX_LD = "${pkgs.stdenv.cc.libc_bin}/bin/ld.so";
-
     nativeBuildInputs = [] ++ deps;
 
     shellHook = ''
-        DOTNET_ROOT="${dotnet-pkgs}";
+        export DOTNET_ROOT="${dotnet-pkgs}";
+        export LD_LIBRARY_PATH="${pkgs.lib.makeLibraryPath ([
+            pkgs.stdenv.cc.cc
+        ] ++ deps)}";
+        export NIX_LD
     '';
 }
