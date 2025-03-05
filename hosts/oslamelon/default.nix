@@ -5,9 +5,9 @@
         ../systemConfig/optional/docker.nix
         ../systemConfig/optional/mpd.nix
         ../systemConfig/optional/gamemode.nix
-        ../systemConfig/optional/qemu.nix
         ../systemConfig/optional/mysql.nix
         ../systemConfig/optional/tmux.nix
+        ../systemConfig/optional/virtMachine.nix
     ];
 
     # Use the systemd-boot EFI boot loader.

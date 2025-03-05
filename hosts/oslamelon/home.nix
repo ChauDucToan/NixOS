@@ -5,6 +5,7 @@
         ../homeConfig/optional/nautilus.nix
         ../homeConfig/optional/obs.nix
         ../homeConfig/optional/osu.nix
+        ../homeConfig/optional/brave.nix
         ../homeConfig/optional/obsidian.nix
     ];
 
