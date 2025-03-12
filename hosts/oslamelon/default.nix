@@ -140,6 +140,7 @@
         bottles
         winetricks
         wineWowPackages.stable
+        heroic
     ] ++ [
         mpc
         pavucontrol
@@ -162,7 +163,6 @@
         slurp
         rofi
         dbus
-        vscode
     ];
     
     programs.nix-ld.enable = true;

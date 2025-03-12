@@ -6,6 +6,7 @@
         ../homeConfig/optional/obs.nix
         ../homeConfig/optional/osu.nix
         ../homeConfig/optional/brave.nix
+        ../homeConfig/optional/keepassxc.nix
         ../homeConfig/optional/obsidian.nix
     ];
 
