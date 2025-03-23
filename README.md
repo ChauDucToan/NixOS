@@ -3,7 +3,7 @@ These are my dotfiles (configuration files) for my NixOS. There still are a lot
 of mistakes and improve so stay tune for my new updates.
 
 ## NixOS tree
-```
+```netrw
 ~/nix-config
 ├── flake.nix          # Entry point
 ├── hosts/             # System-specific configs
@@ -20,7 +20,8 @@ of mistakes and improve so stay tune for my new updates.
       └── clangd/
 ```
 ## Neovim tree
-```
+This tree I made based on ThePrimeagen's repository
+```netrw
 nvim/
 ├── init.lua           # Entry point for each user's configs
 └── lua/               # Machine-specific configs
@@ -30,4 +31,9 @@ nvim/
         ├── init.lua
         ├── remap.lua
         └── set.lua 
+```
+## How to use
+Run the following bash file
+```bash
+bash ~/NixOS/setup.bash
 ```

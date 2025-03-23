@@ -141,6 +141,7 @@
         winetricks
         wineWowPackages.stable
         heroic
+        openssl
     ] ++ [
         mpc
         pavucontrol

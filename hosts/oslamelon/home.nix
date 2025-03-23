@@ -18,6 +18,7 @@
             (writeShellScriptBin "my-hello" ''
                 echo "Hello, ${config.home.username}!"
             '')
+            # sublime4
         ];
     };
 }

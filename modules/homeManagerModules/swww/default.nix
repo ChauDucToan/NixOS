@@ -2,7 +2,7 @@
     cfg = config.services.swww;
     wallpaperPath = "${config.home.homeDirectory}/Pictures/${cfg.wallpaper}";
 in {
-    options.services.swww.enable = mkOption {
+    options.services.swww.enabled = mkOption {
         type = types.bool;
         default = false;
         example = true;
@@ -16,7 +16,7 @@ in {
         description = "Select img from ~/Pictures";
     };
 
-    config = mkIf cfg.enable {
+    config = mkIf ((lib.strings.trim cfg.wallpaper) != "") {
         home.packages = [ pkgs.swww ];
 
         systemd.user.services.swww-set-wallpaper = {
