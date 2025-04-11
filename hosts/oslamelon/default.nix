@@ -133,6 +133,8 @@
         jdk17
         nodejs_22
         texliveFull
+        nest-cli
+        nest-mpi
             
         gtk4
         mangohud

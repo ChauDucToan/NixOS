@@ -8,6 +8,8 @@
         ../homeConfig/optional/brave.nix
         ../homeConfig/optional/keepassxc.nix
         ../homeConfig/optional/obsidian.nix
+        ../homeConfig/optional/spotube.nix
+        ../homeConfig/optional/appflowy.nix
     ];
 
     home = {
@@ -18,7 +20,6 @@
             (writeShellScriptBin "my-hello" ''
                 echo "Hello, ${config.home.username}!"
             '')
-            # sublime4
         ];
     };
 }
