@@ -88,6 +88,10 @@
         nvidia_cg_toolkit
         nvidia-optical-flow-sdk
         nvidia-texture-tools
+        cudaPackages.libcusparse
+        # cudaPackages.cusparselt
+        cudaPackages.cudatoolkit
+        # cudaPackages.cuda_cudart
 
         wineWowPackages.waylandFull
         cachix
@@ -121,6 +125,7 @@
 
         go
 
+        python313
         python3
         conda
 

@@ -9,8 +9,9 @@
         ./hardware-configuration.nix
         ../systemConfig/global
         ../systemConfig/optional/docker.nix
-        ../systemConfig/optional/printing.nix
+        # ../systemConfig/optional/printing.nix
         ../systemConfig/optional/mpd.nix
+        ../systemConfig/optional/virtMachine.nix
         ../systemConfig/optional/gamemode.nix
         ../systemConfig/optional/mysql.nix
     ];
@@ -30,6 +31,10 @@
         graphics = {
             enable = true;
             enable32Bit = true;
+            extraPackages = [
+                pkgs.rocmPackages.clr.icd
+                pkgs.amdvlk
+            ];
         };
         cpu = {
             amd = {
@@ -89,17 +94,27 @@
     # $ nix search wget
     environment.systemPackages = with pkgs; [
         vulkan-tools
+        lact
         mesa
         libGLU
 
         go
         python314
+        python3
+        python312Packages.conda
+
         libgcc
         gcc14
+        luajitPackages.luarocks
+        lua51Packages.lua
+
+        nest-cli
+        nodejs_23
 
         gtk4
 
         git
+        gh
         gitless
 
         nix
@@ -133,8 +148,17 @@
         gnomeExtensions.cronomix
         gnomeExtensions.app-hider
         gnomeExtensions.alternate-menu-for-hplip2
+
+        dunst
+        grim
+        rofi
+        wl-clipboard
+        slurp
     ];
 
+    systemd.packages = [ pkgs.lact ];
+    systemd.services.lactd.wantedBy = [ "multi-user.target" ];
+    environment.sessionVariables.NIXOS_OZONE_WL = "1";
     # Some programs need SUID wrappers, can be configured further or are
     # started in user sessions.
     # programs.mtr.enable = true;

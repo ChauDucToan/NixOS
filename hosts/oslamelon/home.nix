@@ -7,8 +7,6 @@
         ../homeConfig/optional/osu.nix
         ../homeConfig/optional/brave.nix
         ../homeConfig/optional/keepassxc.nix
-        ../homeConfig/optional/obsidian.nix
-        ../homeConfig/optional/spotube.nix
         ../homeConfig/optional/appflowy.nix
     ];
 
