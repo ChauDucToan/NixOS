@@ -14,6 +14,7 @@
         packages = with pkgs; [
             mpv
             fastfetch
+            vlc
 
             (writeShellScriptBin "my-hello" ''
                 echo "Hello, ${config.home.username}!"
