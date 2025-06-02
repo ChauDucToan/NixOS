@@ -5,9 +5,9 @@
         ../systemConfig/optional/docker.nix
         ../systemConfig/optional/mpd.nix
         ../systemConfig/optional/gamemode.nix
-        ../systemConfig/optional/mysql.nix
-        ../systemConfig/optional/tmux.nix
-        ../systemConfig/optional/virtMachine.nix
+        # ../systemConfig/optional/mysql.nix
+        # ../systemConfig/optional/tmux.nix
+        # ../systemConfig/optional/virtMachine.nix
     ];
 
     # Use the systemd-boot EFI boot loader.
@@ -77,23 +77,7 @@
         git
         openssh
         libmad
-
         libGLU
-        linuxKernel.packages.linux_xanmod_latest.nvidia_x11
-        linuxKernel.packages.linux_xanmod_latest.system76
-        linuxKernel.packages.linux_xanmod_latest.system76-io
-        cudaPackages.libnvidia_nscq
-        nvidia-vaapi-driver
-        nvidia_oc
-        nvidia_cg_toolkit
-        nvidia-optical-flow-sdk
-        nvidia-texture-tools
-        cudaPackages.libcusparse
-        # cudaPackages.cusparselt
-        cudaPackages.cudatoolkit
-        # cudaPackages.cuda_cudart
-
-        wineWowPackages.waylandFull
         cachix
 
         mesa-demos
@@ -133,21 +117,13 @@
         libgcc
         gcc14
 
-        postgresql
-
         jdk17
-        nodejs_22
+        nodejs_24
         texliveFull
         nest-cli
         nest-mpi
             
         gtk4
-        mangohud
-        protonup
-        bottles
-        winetricks
-        wineWowPackages.stable
-        heroic
         openssl
     ] ++ [
         mpc
@@ -165,7 +141,6 @@
         lf
 
         swappy
-        mako
         dunst
         grim
         slurp

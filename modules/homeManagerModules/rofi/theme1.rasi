@@ -1,0 +1,126 @@
+* {
+    // Define colors
+    background-color: #2e3440; // Nord0
+    foreground-color: #d8dee9; // Nord4
+    selected-background-color: #5e81ac; // Nord10
+    selected-foreground-color: #eceff4; // Nord6
+    urgent-background-color: #bf616a; // Nord11
+    urgent-foreground-color: #eceff4; // Nord6
+    active-background-color: #88c0d0; // Nord9
+    active-foreground-color: #eceff4; // Nord6
+
+    // Borders
+    border-color: @selected-background-color;
+
+    // General
+    spacing: 2;
+    margin: 0;
+    padding: 0;
+}
+
+window {
+    background-color: @background-color;
+    border: 1px;
+    padding: 10px;
+}
+
+mainbox {
+    border: 0;
+    padding: 0;
+}
+
+inputbar {
+    spacing: 5px;
+    padding: 5px;
+    background-color: @background-color;
+    children: [ prompt, entry, case-indicator ];
+}
+
+prompt {
+    enabled: true;
+    padding: 0 0 0 5px;
+    background-color: @background-color;
+    text-color: @selected-background-color;
+}
+
+textbox-prompt-colon {
+    enabled: false; // Hide the colon
+}
+
+entry {
+    padding: 0 5px 0 5px;
+    background-color: @background-color;
+    text-color: @foreground-color;
+    caret-color: @foreground-color;
+}
+
+case-indicator {
+    padding: 0 5px 0 0;
+    background-color: @background-color;
+    text-color: @foreground-color;
+}
+
+listview {
+    background-color: @background-color;
+    columns: 1;
+    lines: 10;
+    spacing: 2px;
+    cycle: true;
+    dynamic: true;
+    layout: vertical;
+}
+
+element {
+    background-color: @background-color;
+    text-color: @foreground-color;
+    padding: 5px;
+    orientation: horizontal;
+}
+
+element.normal.normal {
+    background-color: @background-color;
+    text-color: @foreground-color;
+}
+
+element.normal.urgent {
+    background-color: @urgent-background-color;
+    text-color: @urgent-foreground-color;
+}
+
+element.normal.active {
+    background-color: @active-background-color;
+    text-color: @active-foreground-color;
+}
+
+element.selected.normal {
+    background-color: @selected-background-color;
+    text-color: @selected-foreground-color;
+}
+
+element.selected.urgent {
+    background-color: @urgent-background-color;
+    text-foreground-color: @selected-foreground-color;
+}
+
+element.selected.active {
+    background-color: @active-background-color;
+    text-foreground-color: @selected-foreground-color;
+}
+
+element-icon {
+    background-color: @background-color;
+    size: 1em;
+}
+
+element-text {
+    background-color: @background-color;
+    text-color: @foreground-color;
+}
+
+scrollbar {
+    handle-color: @selected-background-color;
+    background-color: @background-color;
+    width: 5px;
+    border: 0;
+    margin: 0;
+}

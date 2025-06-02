@@ -9,12 +9,13 @@
         ./neovim.nix
         ./wallpaper.nix
         ./waybar.nix
+        ./rofi.nix
+        ./git.nix
     ];
 
     programs = {
         # Let Home Manager install and manage itself.
         home-manager.enable = true;
-        git.enable = true;
     };
 
     home = {

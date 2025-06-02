@@ -7,14 +7,13 @@
         ../homeConfig/optional/osu.nix
         ../homeConfig/optional/brave.nix
         ../homeConfig/optional/keepassxc.nix
-        ../homeConfig/optional/appflowy.nix
+        ../homeConfig/optional/obsidian.nix
     ];
 
     home = {
         packages = with pkgs; [
             mpv
             fastfetch
-            vlc
 
             (writeShellScriptBin "my-hello" ''
                 echo "Hello, ${config.home.username}!"

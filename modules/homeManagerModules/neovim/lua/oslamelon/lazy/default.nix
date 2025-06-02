@@ -6,6 +6,5 @@
         ./telescope.nix
         ./treesitter.nix
         ./lualine.nix
-        ./markview.nix
     ];
 }
