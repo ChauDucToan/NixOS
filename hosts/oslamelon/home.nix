@@ -8,12 +8,14 @@
         ../homeConfig/optional/brave.nix
         ../homeConfig/optional/keepassxc.nix
         ../homeConfig/optional/obsidian.nix
+        ../homeConfig/optional/vscode.nix
     ];
 
     home = {
         packages = with pkgs; [
             mpv
             fastfetch
+            syncthing
 
             (writeShellScriptBin "my-hello" ''
                 echo "Hello, ${config.home.username}!"

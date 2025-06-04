@@ -151,7 +151,7 @@
 
         dunst
         grim
-        rofi
+        rofi-wayland
         wl-clipboard
         slurp
     ];

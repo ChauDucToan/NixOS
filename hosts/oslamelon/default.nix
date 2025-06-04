@@ -5,6 +5,25 @@
         ../systemConfig/optional/docker.nix
         ../systemConfig/optional/mpd.nix
         ../systemConfig/optional/gamemode.nix
+
+        (import ../systemConfig/optional/sddm.nix {
+            inherit pkgs lib;
+            themeName = "where_is_my_sddm_theme";
+            themePackage = pkgs.where-is-my-sddm-theme.override {
+                themeConfig.General = {
+                    background = toString ../../background/dock.png;
+                    backgroundMode = "fill";
+                };
+            };
+
+            isWayland = true;
+            dependencies = with pkgs; [ 
+                kdePackages.qt5compat
+                kdePackages.qtdeclarative
+            ];
+
+        })
+
         # ../systemConfig/optional/mysql.nix
         # ../systemConfig/optional/tmux.nix
         # ../systemConfig/optional/virtMachine.nix
@@ -65,8 +84,9 @@
 
     # Enable the SDDM Desktop Environment.
     services.displayManager.enable = true;
-    services.displayManager.sddm.enable = true;
-    services.displayManager.sddm.wayland.enable = true;
+    services.displayManager.sddm = {
+        enable = true;
+    };
 
     # Configure keymap in X11
     services.xserver.xkb.layout = "us";
@@ -109,6 +129,7 @@
 
         go
 
+        jetbrains.pycharm-professional
         python313
         python3
         conda
@@ -126,6 +147,7 @@
         gtk4
         openssl
     ] ++ [
+
         mpc
         pavucontrol
         ncmpcpp
@@ -146,7 +168,16 @@
         slurp
         rofi
         dbus
+
     ];
     
     programs.nix-ld.enable = true;
+
+
+    # Open ports in the firewall.
+    # networking.firewall.allowedTCPPorts = [ ... ];
+    # networking.firewall.allowedUDPPorts = [ ... ];
+    # networking.firewall.logRefusedUnicastsOnly = false;
+    # Or disable the firewall altogether.
+    networking.firewall.enable = false;
 }
