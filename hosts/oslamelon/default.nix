@@ -130,8 +130,6 @@
         go
 
         jetbrains.pycharm-professional
-        python313
-        python3
         conda
 
         boost

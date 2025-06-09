@@ -9,11 +9,13 @@
         ./hardware-configuration.nix
         ../systemConfig/global
         ../systemConfig/optional/docker.nix
-        # ../systemConfig/optional/printing.nix
+        ../systemConfig/optional/printing.nix
         ../systemConfig/optional/mpd.nix
         ../systemConfig/optional/virtMachine.nix
         ../systemConfig/optional/gamemode.nix
         ../systemConfig/optional/mysql.nix
+        ../systemConfig/optional/heroic.nix
+        ../systemConfig/optional/postgresql.nix
     ];
 
     # Bootloader.
@@ -102,20 +104,22 @@
         python314
         python3
         python312Packages.conda
+        jetbrains.pycharm-professional
 
+        prisma
+        prisma-engines
+        anydesk
         libgcc
         gcc14
         luajitPackages.luarocks
         lua51Packages.lua
 
         nest-cli
-        nodejs_23
+        nodejs_24
 
         gtk4
 
-        git
         gh
-        gitless
 
         nix
 
@@ -154,6 +158,9 @@
         rofi-wayland
         wl-clipboard
         slurp
+
+        texliveFull
+        texstudio
     ];
 
     systemd.packages = [ pkgs.lact ];
@@ -173,7 +180,7 @@
     # services.openssh.enable = true;
     
     # Open ports in the firewall.
-    # networking.firewall.allowedTCPPorts = [ ... ];
+    # networking.firewall.allowedTCPPorts = [ 45678 ];
     # networking.firewall.allowedUDPPorts = [ ... ];
     # Or disable the firewall altogether.
     # networking.firewall.enable = false;
