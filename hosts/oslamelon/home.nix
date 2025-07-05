@@ -9,6 +9,8 @@
         ../homeConfig/optional/keepassxc.nix
         ../homeConfig/optional/obsidian.nix
         ../homeConfig/optional/vscode.nix
+        ../homeConfig/optional/appflowy.nix
+        ../homeConfig/optional/astah.nix
     ];
 
     home = {
@@ -16,6 +18,7 @@
             mpv
             fastfetch
             syncthing
+            anydesk
 
             (writeShellScriptBin "my-hello" ''
                 echo "Hello, ${config.home.username}!"

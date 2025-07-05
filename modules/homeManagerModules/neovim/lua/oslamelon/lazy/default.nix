@@ -6,5 +6,6 @@
         ./telescope.nix
         ./treesitter.nix
         ./lualine.nix
+        ./autopairs.nix
     ];
 }

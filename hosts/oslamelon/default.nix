@@ -3,7 +3,7 @@
         ./hardware-configuration.nix
         ../systemConfig/global
         ../systemConfig/optional/docker.nix
-        ../systemConfig/optional/mpd.nix
+        # ../systemConfig/optional/mpd.nix
         ../systemConfig/optional/gamemode.nix
 
         (import ../systemConfig/optional/sddm.nix {
@@ -26,7 +26,8 @@
 
         # ../systemConfig/optional/mysql.nix
         # ../systemConfig/optional/tmux.nix
-        # ../systemConfig/optional/virtMachine.nix
+        ../systemConfig/optional/virtMachine.nix
+        ../systemConfig/optional/heroic.nix
     ];
 
     # Use the systemd-boot EFI boot loader.
@@ -130,6 +131,7 @@
         go
 
         jetbrains.pycharm-professional
+        ruff
         conda
 
         boost
@@ -167,15 +169,51 @@
         rofi
         dbus
 
+        wireguard-tools
+    ] ++ [
+        arduino
+        screen
     ];
     
     programs.nix-ld.enable = true;
 
+    programs.gamescope = {
+        enable = true;
+        capSysNice = true;
+    };
+
+    programs.steam = {
+        enable = true;
+        gamescopeSession.enable = true;
+    };
+    nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+        "steam"
+        "steam-original"
+        "steam-unwrapped"
+        "steam-run"
+    ];
 
     # Open ports in the firewall.
     # networking.firewall.allowedTCPPorts = [ ... ];
-    # networking.firewall.allowedUDPPorts = [ ... ];
+    # networking.firewall.allowedUDPPorts = [ 51820 ];
     # networking.firewall.logRefusedUnicastsOnly = false;
     # Or disable the firewall altogether.
     networking.firewall.enable = false;
+
+    # networking.wireguard.enable = true;
+    # 
+    # networking.wireguard.interfaces.wg0 = {
+    #     ips = [ "10.0.0.2/24" ]; # IP phía client
+    #     listenPort = 51820;
+    #     privateKeyFile = "/home/oslamelon/wireguard-keys/private";
+
+    #     peers = [
+    #         {
+    #             publicKey = "pWaI5xjGZ9HaRm67eKXzovBH4a7PyG64Cbty8yJ0OVM=";
+    #             endpoint = "35.234.31.188:51820"; # địa chỉ IP hoặc domain server
+    #             allowedIPs = [ "0.0.0.0/0" ]; # định tuyến toàn bộ lưu lượng
+    #             persistentKeepalive = 25;
+    #         }
+    #     ];
+    # };
 }
