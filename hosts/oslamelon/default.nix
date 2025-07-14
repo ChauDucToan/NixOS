@@ -24,7 +24,7 @@
 
         })
 
-        # ../systemConfig/optional/mysql.nix
+        ../systemConfig/optional/mysql.nix
         # ../systemConfig/optional/tmux.nix
         ../systemConfig/optional/virtMachine.nix
         ../systemConfig/optional/heroic.nix
@@ -146,8 +146,9 @@
             
         gtk4
         openssl
-    ] ++ [
 
+        python3
+    ] ++ [
         mpc
         pavucontrol
         ncmpcpp
@@ -159,6 +160,7 @@
 
         wl-clipboard
         waybar
+        eww
 
         lf
 
@@ -173,6 +175,7 @@
     ] ++ [
         arduino
         screen
+        protonup-qt
     ];
     
     programs.nix-ld.enable = true;
@@ -199,21 +202,4 @@
     # networking.firewall.logRefusedUnicastsOnly = false;
     # Or disable the firewall altogether.
     networking.firewall.enable = false;
-
-    # networking.wireguard.enable = true;
-    # 
-    # networking.wireguard.interfaces.wg0 = {
-    #     ips = [ "10.0.0.2/24" ]; # IP phía client
-    #     listenPort = 51820;
-    #     privateKeyFile = "/home/oslamelon/wireguard-keys/private";
-
-    #     peers = [
-    #         {
-    #             publicKey = "pWaI5xjGZ9HaRm67eKXzovBH4a7PyG64Cbty8yJ0OVM=";
-    #             endpoint = "35.234.31.188:51820"; # địa chỉ IP hoặc domain server
-    #             allowedIPs = [ "0.0.0.0/0" ]; # định tuyến toàn bộ lưu lượng
-    #             persistentKeepalive = 25;
-    #         }
-    #     ];
-    # };
 }

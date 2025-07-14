@@ -1,6 +1,6 @@
 {pkgs, inputs, ...}:
 let
-    astah = pkgs.callPackage ../../../modules/homeManagerModules/Astah/astah.nix {};
+    astah = pkgs.callPackage ../../../modules/homeManagerModules/astah_uml/astah.nix {};
 in
 {
     home.packages = [ 

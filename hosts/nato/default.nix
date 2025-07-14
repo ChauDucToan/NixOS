@@ -161,6 +161,7 @@
 
         texliveFull
         texstudio
+        protonup-qt
     ];
 
     systemd.packages = [ pkgs.lact ];
