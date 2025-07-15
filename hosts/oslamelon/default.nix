@@ -185,10 +185,12 @@
         capSysNice = true;
     };
 
+
     programs.steam = {
         enable = true;
         gamescopeSession.enable = true;
     };
+
     nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
         "steam"
         "steam-original"
@@ -196,8 +198,10 @@
         "steam-run"
     ];
 
+    services.openssh.enable = true;
+    
     # Open ports in the firewall.
-    # networking.firewall.allowedTCPPorts = [ ... ];
+    # networking.firewall.allowedTCPPorts = [ 22 ];
     # networking.firewall.allowedUDPPorts = [ 51820 ];
     # networking.firewall.logRefusedUnicastsOnly = false;
     # Or disable the firewall altogether.

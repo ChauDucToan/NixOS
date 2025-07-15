@@ -20,7 +20,30 @@
         })
         (mkLazyPlugin {
             name = "ThePrimeagen/vim-be-good";
+            lazy = true;
+        })
+        (mkLazyPlugin {
+            name = "ibhagwan/fzf-lua";
             lazy = false;
+            extraConf = ''
+                dependencies = { "nvim-tree/nvim-web-devicons" },
+                opts = {},
+            '';
+        })
+        (mkLazyPlugin {
+            name = "Dan7h3x/neaterm.nvim";
+            lazy = false;
+            extraConf = ''
+                branch = "stable",
+                event = "VeryLazy",
+                opts = {
+                  -- Your custom options here (optional)
+                },
+                dependencies = {
+                    "nvim-lua/plenary.nvim",
+                    "ibhagwan/fzf-lua",
+                },
+            '';
         })
         (mkLazyPlugin {
             name = "Bekaboo/deadcolumn.nvim";

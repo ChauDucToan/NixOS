@@ -1,5 +1,5 @@
 {lib, user}: {
-    mkLazyPlugin = { name, lazy ? true, init ? "", dependencies ? []}: {
+    mkLazyPlugin = { name, lazy ? true, init ? "", extraConf? "", dependencies ? []}: {
         pkgsDependencies = dependencies;
 
         configFile = {
@@ -8,6 +8,9 @@
                 return {
                     "${name}",
                     lazy = ${lib.boolToString lazy},
+                    ${lib.optionalString (extraConf != "") ''
+                        ${extraConf}
+                    ''}
                     ${lib.optionalString (init != "") ''
                     init = function()
                         ${init}
