@@ -21,6 +21,10 @@ in {
 
         vim.keymap.set("n", "<leader>f", "$V%zf")
 
+        -- Open terminal with Neaterm
+        vim.keymap.set("n", "<leader>t", ":NeatermVertical<Enter>")
+        vim.keymap.set("n", "<leader>tq", ":NeatermToggle<Enter>")
+
         -- vim.keymap.set("n", "<leader>t", function()
         --     fileName = vim.fn.expand("%:t:r")
         --     vim.cmd(string.format('!my-md-template %s', fileName))
