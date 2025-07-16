@@ -1,5 +1,9 @@
-{user,...}: {
+{pkgs, lib, user,...}:
+{
     imports = [
-        ./${user.info.username}
+        ./init.nix
+        ./remap.nix
+        ./set.nix
+        ./lazy
     ];
 }

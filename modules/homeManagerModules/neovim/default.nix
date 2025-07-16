@@ -11,7 +11,7 @@ let
     allConfigFiles = lib.lists.flatten (map (p: [p.configFile]) plugins.plugins);
 in {
     imports = [
-        ./lua/oslamelon
+        ./lua
     ];
 
     home.packages = allDependencies;

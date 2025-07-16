@@ -13,6 +13,14 @@
             '';
         })
         (mkLazyPlugin {
+            name = "windwp/nvim-autopairs";
+            extraConf = ''
+                event = "InsertEnter",
+                config = true,
+                opts = {},
+            '';
+        })
+        (mkLazyPlugin {
             name = "preservim/vim-markdown";
         })
         (mkLazyPlugin {
