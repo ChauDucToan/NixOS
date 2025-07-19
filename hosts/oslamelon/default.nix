@@ -7,6 +7,7 @@
         # ../systemConfig/optional/mpd.nix
         ../systemConfig/optional/gamemode.nix
         ../systemConfig/optional/secret
+        ../systemConfig/optional/StreamingHost.nix
 
 
         (import ../systemConfig/optional/sddm.nix {

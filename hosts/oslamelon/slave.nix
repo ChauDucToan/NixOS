@@ -11,6 +11,9 @@
                 openssh.authorizedKeys.keys = [
                     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMtPd+7h+1aOwx7j9APlr4BcD93w+eFmJWs+1TgRoDhU khat@oslamelon.ddns.net"
                 ];
+                packages = with pkgs; [
+                    neovim
+                ];
             };
         };
         groups = {
