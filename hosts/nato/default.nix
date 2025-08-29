@@ -167,6 +167,17 @@
     systemd.packages = [ pkgs.lact ];
     systemd.services.lactd.wantedBy = [ "multi-user.target" ];
     environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
+    programs.git = {
+        enable = true;
+        config = [
+            {
+                credential = {
+                    helper = "keepassxc";
+                };
+            }
+        ];
+    };
     # Some programs need SUID wrappers, can be configured further or are
     # started in user sessions.
     # programs.mtr.enable = true;

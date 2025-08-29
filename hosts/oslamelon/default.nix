@@ -1,13 +1,9 @@
 { config, lib, inputs, user, pkgs, ... }: {
     imports = [ # Include the results of the hardware scan.
         ./hardware-configuration.nix
-        ./slave.nix
         ../systemConfig/global
         ../systemConfig/optional/docker.nix
-        # ../systemConfig/optional/mpd.nix
         ../systemConfig/optional/gamemode.nix
-        ../systemConfig/optional/secret
-        ../systemConfig/optional/StreamingHost.nix
 
 
         (import ../systemConfig/optional/sddm.nix {
@@ -29,7 +25,6 @@
         })
 
         ../systemConfig/optional/mysql.nix
-        # ../systemConfig/optional/tmux.nix
         ../systemConfig/optional/virtMachine.nix
         ../systemConfig/optional/heroic.nix
     ];
@@ -38,6 +33,11 @@
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
     boot.kernelPackages = pkgs.linuxKernel.packages.linux_xanmod_latest;
+
+    networking.interfaces.enp0s31f6 = {
+        wakeOnLan.enable = true;
+        wakeOnLan.policy = [ "magic" ];
+    };
 
     hardware = {
         graphics = {
@@ -101,6 +101,7 @@
     environment.systemPackages = with pkgs; [
         git
         openssh
+
         libmad
         libGLU
         cachix
@@ -134,7 +135,6 @@
 
         go
 
-        jetbrains.pycharm-professional
         ruff
         conda
 
@@ -180,6 +180,9 @@
         arduino
         screen
         protonup-qt
+    ] ++ [
+        wine
+        winetricks
     ];
     
     programs.nix-ld.enable = true;
@@ -188,7 +191,6 @@
         enable = true;
         capSysNice = true;
     };
-
 
     programs.steam = {
         enable = true;

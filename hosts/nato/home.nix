@@ -9,6 +9,7 @@
         ../homeConfig/optional/osu.nix
         ../homeConfig/optional/obsidian.nix
         ../homeConfig/optional/brave.nix
+        ../homeConfig/optional/vivaldi.nix
         ../homeConfig/optional/keepassxc.nix
         ../homeConfig/optional/vscode.nix
     ];
@@ -30,7 +31,6 @@
         mpv
         fastfetch
         kanata
-        appflowy
         telegram-desktop
 
         # # It is sometimes useful to fine-tune packages, for example, by applying
