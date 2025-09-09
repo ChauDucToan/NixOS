@@ -5,7 +5,7 @@ while true; do
     echo "========SETUP========"
     echo "1. Build system configuration"
     echo "2. Build home configuration"
-    echo "3. Auto ssh eval"
+    echo "3. Auto git push"
     echo "====================="
 
     read -rp "Choose an option (1-3): " num
@@ -32,6 +32,17 @@ case $num in
                 echo "Key not found at $HOME/.ssh/$p — please try again"
             fi
         done
+        
+        while true; do
+            read -rp "Enter git commit message (without .pub) in \$HOME: " mes
+            if [[ -n "$mes" ]]; then
+                break
+            fi
+        done
+
+        git add .
+        git commit -m "feat(auto push): $mes"
+        git push origin main
         ;;
 esac
 

@@ -11,7 +11,7 @@
     nixpkgs.config.allowUnfree = true;
     users.users.${user.info.username} = {
         isNormalUser = true;
-        extraGroups = [ "dialout" "uucp" "networkmanager" "wheel" "docker" "gamemode" ];
+        extraGroups = [ "dialout" "uucp" "networkmanager" "wheel" "gamemode" ];
         uid = 1000;
     };
 

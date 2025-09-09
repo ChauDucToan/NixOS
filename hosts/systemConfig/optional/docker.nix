@@ -1,4 +1,4 @@
-{pkgs, ...} :{
+{pkgs, user, ...} :{
     virtualisation.docker = {
         enable = true;
         rootless = {
@@ -10,5 +10,9 @@
         extraPackages = with pkgs; [
             docker-compose
         ];
+    };
+
+    users.users.${user.info.username} = {
+        extraGroups = [ "docker" ];
     };
 }

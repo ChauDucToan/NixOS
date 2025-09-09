@@ -3,6 +3,7 @@
         ./hardware-configuration.nix
         ../systemConfig/global
         ../systemConfig/optional/docker.nix
+        ../systemConfig/optional/nautilus.nix
         ../systemConfig/optional/gamemode.nix
 
 
@@ -105,7 +106,7 @@
         libmad
         libGLU
         cachix
-
+        
         mesa-demos
         mesa
         vulkan-headers 
@@ -183,6 +184,8 @@
     ] ++ [
         wine
         winetricks
+    ] ++ [
+        gnome-disk-utility
     ];
     
     programs.nix-ld.enable = true;

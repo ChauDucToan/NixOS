@@ -2,7 +2,6 @@
     imports = [
         ../homeConfig/global
         ../homeConfig/optional/libreOffice.nix
-        ../homeConfig/optional/nautilus.nix
         ../homeConfig/optional/obs.nix
         ../homeConfig/optional/osu.nix
         ../homeConfig/optional/vivaldi.nix
