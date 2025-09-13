@@ -186,7 +186,17 @@
         winetricks
     ] ++ [
         gnome-disk-utility
+
+        javaPackages.openjfx23
+        scenebuilder
+        xorg.libX11
+        jetbrains.idea-ultimate
     ];
+
+    programs.java = {
+        enable = true;
+        package = pkgs.jdk23.override { enableJavaFX = true; };
+    };
     
     programs.nix-ld.enable = true;
 
